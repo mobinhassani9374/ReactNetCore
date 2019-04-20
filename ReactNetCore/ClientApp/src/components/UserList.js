@@ -5,12 +5,12 @@ import UserItem from './UserItem';
 export default class UserList extends Component {
     state = {
         userList: [
-            
+
         ]
     }
-    componentDidMount() {        
-        Request('/api/user').then(res=>{           
-            this.setState({userList:res.data})
+    componentDidMount() {
+        Request('/api/user').then(res => {
+            this.setState({ userList: res.data })
         })
     }
     render() {
