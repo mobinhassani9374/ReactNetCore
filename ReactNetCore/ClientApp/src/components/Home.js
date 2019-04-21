@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import UserList from './UserList';
-import UserAdd from './UserAdd';
 
 export class Home extends Component {
 
@@ -10,9 +9,7 @@ export class Home extends Component {
         <div className="row">
           <div className="card">
             <div className="card-body p-3">
-              <UserList />
-              <hr />
-              <UserAdd />
+              <UserList />              
             </div>
           </div>
         </div>

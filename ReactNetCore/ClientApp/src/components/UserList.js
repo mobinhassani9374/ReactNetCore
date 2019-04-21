@@ -1,15 +1,26 @@
 import React, { Component } from 'react'
 import Request from '../Service/Request';
 import UserItem from './UserItem';
+import UserAdd from './UserAdd';
 
 export default class UserList extends Component {
     state = {
         userList: [
 
         ],
-        isLoading : true
+        isLoading: true
     }
     componentDidMount() {
+        this.loadData();
+    }
+
+    loadData = () => {
+        this.setState({
+            userList: [
+
+            ],
+            isLoading: true
+        })
         Request('/api/user').then(res => {
             setTimeout(() => {
                 this.setState({ userList: res.data })
@@ -18,7 +29,7 @@ export default class UserList extends Component {
         })
     }
     render() {
-        let { userList , isLoading } = this.state;
+        let { userList, isLoading } = this.state;
         return (
             <div>
                 <table className="table table-striped">
@@ -30,13 +41,15 @@ export default class UserList extends Component {
                             <th>userName</th>
                         </tr>
                     </thead>
-                    <tbody>                       
+                    <tbody>
                         {
                             isLoading ? <tr><td className="text-danger text-center" colSpan="4">در حال بارگزاری اطلاعات</td></tr>
-                            : userList.map((item, key) => <UserItem user={item} key={key} />)
+                                : userList.map((item, key) => <UserItem user={item} key={key} />)
                         }
                     </tbody>
                 </table>
+                <hr />
+                <UserAdd name="mahdi" loadData={this.loadData} />
             </div>
         )
     }
