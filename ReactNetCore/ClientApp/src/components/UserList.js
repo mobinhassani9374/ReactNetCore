@@ -6,17 +6,19 @@ export default class UserList extends Component {
     state = {
         userList: [
 
-        ]
+        ],
+        isLoading : true
     }
     componentDidMount() {
         Request('/api/user').then(res => {
             setTimeout(() => {
                 this.setState({ userList: res.data })
-            }, 500);
+                this.setState({ isLoading: false })
+            }, 1000);
         })
     }
     render() {
-        let { userList } = this.state;
+        let { userList , isLoading } = this.state;
         return (
             <div>
                 <table className="table table-striped">
@@ -28,9 +30,10 @@ export default class UserList extends Component {
                             <th>userName</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody>                       
                         {
-                            userList.map((item, key) => <UserItem user={item} key={key} />)
+                            isLoading ? <tr><td className="text-danger text-center" colSpan="4">در حال بارگزاری اطلاعات</td></tr>
+                            : userList.map((item, key) => <UserItem user={item} key={key} />)
                         }
                     </tbody>
                 </table>
