@@ -3,10 +3,14 @@ import UserList from './UserList';
 
 export class Home extends Component {
 
-  render() {    
+  render() {
     return (
-      <div>        
-        <UserList />
+      <div className="container">
+        <div className="card">
+          <div className="card-body p-3">
+            <UserList />
+          </div>
+        </div>
       </div>
     );
   }

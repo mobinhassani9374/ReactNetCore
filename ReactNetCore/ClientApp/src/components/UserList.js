@@ -10,27 +10,31 @@ export default class UserList extends Component {
     }
     componentDidMount() {
         Request('/api/user').then(res => {
-            this.setState({ userList: res.data })
+            setTimeout(() => {
+                this.setState({ userList: res.data })
+            }, 500);
         })
     }
     render() {
         let { userList } = this.state;
         return (
-            <table>
-                <thead>
-                    <tr>
-                        <th>id</th>
-                        <th>fullName</th>
-                        <th>password</th>
-                        <th>userName</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {
-                        userList.map((item, key) => <UserItem user={item} key={key} />)
-                    }
-                </tbody>
-            </table>
+            <div>
+                <table className="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>id</th>
+                            <th>fullName</th>
+                            <th>password</th>
+                            <th>userName</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            userList.map((item, key) => <UserItem user={item} key={key} />)
+                        }
+                    </tbody>
+                </table>
+            </div>
         )
     }
 }
