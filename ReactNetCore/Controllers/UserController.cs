@@ -23,7 +23,7 @@ namespace ReactNetCore.Controllers
         }
 
         [HttpPost]
-        public IActionResult Post(Data.Entities.User model)
+        public IActionResult Post([FromBody]Data.Entities.User model)
         {
             _context.Add(model);
             _context.SaveChanges();
