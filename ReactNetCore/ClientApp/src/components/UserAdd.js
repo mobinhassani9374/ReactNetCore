@@ -21,14 +21,12 @@ export default class UserAdd extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
-        Request('/api/user','post',this.state);
+        Request('/api/user','post',this.state).then(res=>this.loadData())
         this.setState({
             password:'',
             userName:'',
             fullName:''
-        }) 
-
-        this.loadData();               
+        })                       
     }
   
     render() {
