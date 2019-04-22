@@ -37,7 +37,7 @@ export default class UserList extends Component {
     render() {
         let { userList, isLoading } = this.state;
         return (
-            <div>
+            <div className="table-responsive">
                 <table className="table table-striped">
                     <thead>
                         <tr>

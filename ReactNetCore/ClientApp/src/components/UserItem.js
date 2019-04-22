@@ -12,7 +12,7 @@ export default class UserItem extends Component {
                 <td>{user.password}</td>
                 <td>{user.userName}</td>
                 <td>
-                    <button onClick={()=>this.props.deleteUser(user.id)} className="btn btn-danger">delete <i className="fa fa-trash"></i></button>
+                    <button onClick={()=>this.props.deleteUser(user.id)} className="btn btn-outline-danger">delete <i className="fa fa-trash"></i></button>
                 </td>
             </tr>
         )

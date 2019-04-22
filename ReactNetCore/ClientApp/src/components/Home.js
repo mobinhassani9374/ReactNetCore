@@ -7,11 +7,7 @@ export class Home extends Component {
     return (
       <div className="container">
         <div className="row">
-          <div className="card">
-            <div className="card-body p-3">
-              <UserList />              
-            </div>
-          </div>
+          <UserList />   
         </div>
       </div>
     );
