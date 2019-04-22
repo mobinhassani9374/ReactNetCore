@@ -6,6 +6,11 @@ import registerServiceWorker from './registerServiceWorker';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'axios-progress-bar/dist/nprogress.css'
 import '../node_modules/font-awesome/css/font-awesome.css';
+import './docs/fonts/font-fa.css'
+import './docs/css/animate.css'
+import './docs/css/styles.css?v=0.0.1'
+import './docs/lib/pe-icon-7-stroke/css/helper.css'
+import './docs/lib/pe-icon-7-stroke/css/pe-icon-7-stroke.css'
 
 const baseUrl = document.getElementsByTagName('base')[0].getAttribute('href');
 const rootElement = document.getElementById('root');
