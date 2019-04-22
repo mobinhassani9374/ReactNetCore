@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
-import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap-4.1.3-rtl/css/bootstrap.css';
 import 'axios-progress-bar/dist/nprogress.css'
 import '../node_modules/font-awesome/css/font-awesome.css';
 import './docs/fonts/font-fa.css'

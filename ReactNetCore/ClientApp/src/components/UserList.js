@@ -41,11 +41,11 @@ export default class UserList extends Component {
                 <table className="table table-striped">
                     <thead>
                         <tr>
-                            <th>id</th>
-                            <th>fullName</th>
-                            <th>password</th>
-                            <th>userName</th>
-                            <th>delete</th>
+                            <th>ردیف</th>
+                            <th>نام ونام خانوادگی کاربر</th>
+                            <th>رمز عبور</th>
+                            <th>نام کاربری </th>
+                            <th>حذف</th>
                         </tr>
                     </thead>
                     <tbody>

@@ -35,22 +35,22 @@ export default class UserAdd extends Component {
             <div className="card">
                 <div className="card-body">
                     <div className="row">
-                        <div className="col-xs-4">
+                        <div className="col-sm-6">
                             <form onSubmit={this.handleSubmit}>
                                 <div className="form-group">
-                                    <label>fullName</label>
-                                    <input required onChange={this.handleChange} value={fullName} placeholder="fullname" type="text" className="form-control" name="fullName" />
+                                    <label>نام و نام خانوادکی کاربر</label>
+                                    <input required onChange={this.handleChange} value={fullName} placeholder="نام و نام خانوادکی کاربر" type="text" className="form-control" name="fullName" />
                                 </div>
                                 <div className="form-group">
-                                    <label>username</label>
-                                    <input required onChange={this.handleChange} value={userName} placeholder="username" type="text" className="form-control" name="userName" />
+                                    <label>نام کاربری کاربر</label>
+                                    <input required onChange={this.handleChange} value={userName} placeholder="نام کاربری کاربر" type="text" className="form-control" name="userName" />
                                 </div>
                                 <div className="form-group">
-                                    <label>password</label>
-                                    <input required onChange={this.handleChange} value={password} placeholder="password" type="password" className="form-control" name="password" />
+                                    <label>رمز عبور کاربر</label>
+                                    <input required onChange={this.handleChange} value={password} placeholder="رمز عبور کاربر" type="password" className="form-control" name="password" />
                                 </div>
                                 <div className="form-group">
-                                    <button className="btn btn-outline btn-success btn-block">register</button>
+                                    <button className="btn btn-outline btn-success btn-block">ثبت نام</button>
                                 </div>
                             </form>
                         </div>

@@ -2,3 +2,8 @@ body {
     font-family: IRANSans;
     font-size: 12px;
 }
+
+.table thead tr th , .table tbody tr td {
+    text-align: center;
+    vertical-align: middle;
+}
