@@ -25,9 +25,11 @@ export default class UserList extends Component {
             setTimeout(() => {
                 this.setState({ userList: res.data })
                 this.setState({ isLoading: false })
-            }, 1000);
+            }, 100);
         })
     }
+
+  
     render() {
         let { userList, isLoading } = this.state;
         return (
@@ -39,17 +41,18 @@ export default class UserList extends Component {
                             <th>fullName</th>
                             <th>password</th>
                             <th>userName</th>
+                            <th>delete</th>
                         </tr>
                     </thead>
                     <tbody>
                         {
                             isLoading ? <tr><td className="text-danger text-center" colSpan="4">در حال بارگزاری اطلاعات</td></tr>
-                                : userList.map((item, key) => <UserItem user={item} key={key} />)
+                                : userList.map((item, key) => <UserItem user={item} key={key}/>)
                         }
                     </tbody>
                 </table>
                 <hr />
-                <UserAdd name="mahdi" loadData={this.loadData} />
+                <UserAdd loadData={this.loadData} />
             </div>
         )
     }
