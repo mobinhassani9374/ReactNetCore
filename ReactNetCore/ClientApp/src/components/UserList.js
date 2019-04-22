@@ -29,6 +29,10 @@ export default class UserList extends Component {
         })
     }
 
+    deleteUser = (id) => {
+        console.log('id =>>>>>>> ',id);
+        this.loadData();
+    }
   
     render() {
         let { userList, isLoading } = this.state;
@@ -46,8 +50,8 @@ export default class UserList extends Component {
                     </thead>
                     <tbody>
                         {
-                            isLoading ? <tr><td className="text-danger text-center" colSpan="4">در حال بارگزاری اطلاعات</td></tr>
-                                : userList.map((item, key) => <UserItem user={item} key={key}/>)
+                            isLoading ? <tr><td className="text-danger text-center" colSpan="5">در حال بارگزاری اطلاعات</td></tr>
+                                : userList.map((item, key) => <UserItem user={item} key={key} deleteUser={this.deleteUser} />)
                         }
                     </tbody>
                 </table>
