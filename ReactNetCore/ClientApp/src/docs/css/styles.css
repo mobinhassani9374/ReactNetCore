@@ -7,3 +7,20 @@ body {
     text-align: center;
     vertical-align: middle;
 }
+
+.btn {
+    font-size: 13px;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    font-size: 11px;
+    opacity: 1; /* Firefox */
+  }
+  
+  :-ms-input-placeholder { /* Internet Explorer 10-11 */
+    font-size: 11px;
+  }
+  
+  ::-ms-input-placeholder { /* Microsoft Edge */
+    font-size: 11px;
+  }
