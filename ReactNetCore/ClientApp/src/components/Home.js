@@ -7,7 +7,7 @@ export class Home extends Component {
     return (
       <div className="container">
         <div className="row">
-          <UserList />   
+           
         </div>
       </div>
     );
