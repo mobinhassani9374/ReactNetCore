@@ -7,11 +7,7 @@ export default class UserAdd extends Component {
         password:'',
         userName:'',
         fullName:''
-    }
-
-    loadData = () => {
-        this.props.loadData()
-    }
+    }    
 
     handleChange = (event) => {              
         let {value , name} = event.target;       
@@ -22,7 +18,7 @@ export default class UserAdd extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
-        Request('/api/user','post',this.state).then(res=>this.loadData())
+        Request('/api/user','post',this.state).then(res=>alert('کاربر با موفقیت اضافه شد '))
         this.setState({
             password:'',
             userName:'',
