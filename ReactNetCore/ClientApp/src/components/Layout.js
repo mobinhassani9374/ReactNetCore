@@ -17,7 +17,7 @@ export default class Layout extends Component {
                         <NavLink className="nav-link" to="/users-add">اضافه نمودن کاربر جدید </NavLink>
                     </li>                                     
                 </ul>
-            </nav>
+            </nav>            
       </div>
     )
   }

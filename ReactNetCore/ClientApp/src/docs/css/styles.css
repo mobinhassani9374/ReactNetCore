@@ -37,3 +37,7 @@ body {
     border-top-color: red !important;
     border-left-color: red !important;
 }
+
+.section {
+  margin: 20px 0;
+}
