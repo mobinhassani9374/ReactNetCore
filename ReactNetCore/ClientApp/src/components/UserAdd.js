@@ -38,7 +38,8 @@ export default class UserAdd extends Component {
                 <div className="section">
                     <div className="container">
                         <div className="row">
-                            <div className="card col-lg-12">
+                            <div className="card w-100">
+                                <div class="card-header">اضافه نمودن کاربر جدید </div>
                                 <div className="card-body">
                                     <div className="row">
                                         <div className="col-sm-6">
