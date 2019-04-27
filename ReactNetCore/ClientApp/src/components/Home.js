@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
-import UserList from './UserList';
+import {NavLink } from 'react-router-dom';
+import Layout from './Layout';
 
 export class Home extends Component {
 
   render() {
     return (
-      <div className="container">
-        <div className="row">
-           
-        </div>
+      <div>
+        <Layout />
       </div>
     );
   }
