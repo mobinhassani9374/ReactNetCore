@@ -5,7 +5,7 @@ export default class Layout extends Component {
   render() {
     return (
       <div>
-            <nav className="navbar navbar-expand-sm bg-light navbar-light">
+            <nav className="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
                 <ul className="navbar-nav">
                     <li className="nav-item">
                         <NavLink className="nav-link" exact={true} to="/">صفحه اصلی</NavLink>
