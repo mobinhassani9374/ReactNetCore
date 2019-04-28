@@ -22,6 +22,7 @@ namespace ReactNetCore.Controllers
         }
         [HttpPost]
         [AllowAnonymous()]
+        [Route("login")]
         public IActionResult Login([FromBody]Models.LoginModel model)
         {
             var user = _context.Users
