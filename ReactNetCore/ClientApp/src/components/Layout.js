@@ -16,6 +16,9 @@ export default class Layout extends Component {
                     <li className="nav-item">
                         <NavLink className="nav-link" to="/users-add">اضافه نمودن کاربر جدید </NavLink>
                     </li>                                     
+                    <li className="nav-item">
+                        <NavLink className="nav-link" to="/login">ورود</NavLink>
+                    </li>                                     
                 </ul>
             </nav>            
       </div>
