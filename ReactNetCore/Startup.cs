@@ -7,6 +7,11 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using Microsoft.AspNetCore.Mvc.Authorization;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ReactNetCore
 {
@@ -27,7 +32,24 @@ namespace ReactNetCore
                 options.UseSqlServer(@"Data Source=185.51.200.186\SQL2014,2014;Initial Catalog=ferdows5_ReactNetCore;Persist Security Info=True;User ID=mobin; Password=#q9y6f3Y; MultipleActiveResultSets=True");
             });
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services
+              .AddAuthentication(defaultScheme: JwtBearerDefaults.AuthenticationScheme)
+              .AddJwtBearer(options =>
+              {
+                  options.TokenValidationParameters = new TokenValidationParameters
+                  {
+                      ValidateIssuer = true,
+                      ValidateAudience = true,
+                      ValidateLifetime = true,
+                      ValidateIssuerSigningKey = true,
+                      ValidIssuer = "mobinmahdi.ir",
+                      ValidAudience = "mobinmahdi.ir",
+                      IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("mobinmahdi.ir/SecrectKey"))
+                  };
+              });
+
+            services.AddMvc()
+            .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             // In production, the React files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
@@ -54,6 +76,8 @@ namespace ReactNetCore
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
+
+            app.UseAuthentication();
 
             app.UseMvc(routes =>
             {
