@@ -2,6 +2,11 @@ import React, { Component } from 'react'
 import {NavLink } from 'react-router-dom'
 
 export default class Layout extends Component {
+
+  logout=()=> {
+    localStorage.removeItem("token");
+    window.location='/login'
+  }
   render() {
     return (
       <div>
@@ -18,6 +23,9 @@ export default class Layout extends Component {
                     </li>                                     
                     <li className="nav-item">
                         <NavLink className="nav-link" to="/login">ورود</NavLink>
+                    </li>                                     
+                    <li className="nav-item">
+                        <NavLink onClick={this.logout} className="nav-link" to="#">خروج</NavLink>
                     </li>                                     
                 </ul>
             </nav>            
