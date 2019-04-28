@@ -1,9 +1,17 @@
 import React, { Component } from 'react'
 import Layout from './Layout';
+import Request from '../Service/Request';
 
 export default class Login extends Component {
+
+    componentDidMount() {    
+        let hasToken = localStorage.getItem("token");
+        if(hasToken!=null) {
+            window.location='/';
+        }
+    }
     state = {
-        userName :'' ,
+        userName :'',
         password :''
     }
 
@@ -13,10 +21,20 @@ export default class Login extends Component {
             [name]:value
         })
     }
-    handleSubmit=(e)=>{
+    handleSubmit=(e)=> {
         e.preventDefault();
         let {userName , password} = this.state;
         console.log(userName,password);
+        Request('/login','Post',{password,userName}).then(response=>{
+          console.log(response);  
+          if(response.data.isSuccess) {
+             localStorage.setItem("token",response.data.token);
+             window.location='/';
+          }
+          else {
+              alert(response.data.message);
+          }
+        })
     }
     render() {
         let {userName , password} = this.state;

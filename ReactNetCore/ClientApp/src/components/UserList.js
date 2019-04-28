@@ -26,7 +26,12 @@ export default class UserList extends Component {
                 this.setState({ userList: res.data })
                 this.setState({ isLoading: false })
             }, 100);
-        })
+        }).catch(error => {                       
+            if(error.response.status==401) {
+                localStorage.removeItem("token");
+                window.location='/login'
+            }            
+        });
     }
 
     deleteUser = (id) => {

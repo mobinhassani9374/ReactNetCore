@@ -23,7 +23,12 @@ export default class UserAdd extends Component {
             password:'',
             userName:'',
             fullName:''
-        })                       
+        }).catch(error => {                       
+            if(error.response.status==401) {
+                localStorage.removeItem("token");
+                window.location='/login'
+            }            
+        });                    
     }
   
     render() {
