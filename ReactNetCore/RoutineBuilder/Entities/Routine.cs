@@ -20,13 +20,20 @@ namespace ReactNetCore.RoutineBuilder.Entities
         /// </summary>
         public bool HaveDashboardCreation { get; set; }
 
-
         /// <summary>
         ///  حالا که این روال دارای کارتابل ایجاد درخواست است نام کامپوننت یا url  چیست
         /// </summary>
         public string DashboardCreationComponentName { get; set; }
 
+        /// <summary>
+        /// نام داشبوردی که میخواهدی ایجاد درخواست کند
+        /// </summary>
         public string DashboardCreationName { get; set; }
+
+        /// <summary>
+        /// عنوانی که داشبورد ایجاد درخواست میخواهد
+        /// </summary>
+        public string DashboardCreationTitle { get; set; }
 
 
         /// <summary>
