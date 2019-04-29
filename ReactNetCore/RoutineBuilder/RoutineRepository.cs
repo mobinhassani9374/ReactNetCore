@@ -20,37 +20,44 @@ namespace ReactNetCore.RoutineBuilder
         {
             var query = _context.Set<TEntity>().AsQueryable();
 
-            var steps = GetRoleStep(searchCriteria.RoutineId, 
+            var steps = GetRoleStep(searchCriteria.RoutineId,
                 searchCriteria.DashboardEnum);
 
-            var logs = GetUserEntityIds(searchCriteria.RoutineId, 
+            var logs = GetUserEntityIds(searchCriteria.RoutineId,
                 searchCriteria.UserId,
                 searchCriteria.DashboardEnum);
 
             /// ارسال شده ها
             if (searchCriteria.DashboardType == DashboardTypes.Archived)
             {
-                
+                query = query.Where(c => c.RoutineIsFlown == true &&
+                c.RoutineIsDone == false &&
+                 logs.Any(cu => cu == c.RoutineStep) &&
+                 !steps.Any(cu => cu == c.RoutineStep));
             }
 
             /// تازه ها
             if (searchCriteria.DashboardType == DashboardTypes.New)
             {
-
+                query = query.Where(c => c.RoutineIsFlown == true &&
+                  steps.Any(cu => cu == c.RoutineStep));
             }
 
 
             /// پیش نویس ها
             if (searchCriteria.DashboardType == DashboardTypes.Draft)
             {
-
+                query = query.Where(c => c.RoutineIsFlown == false &&
+                  c.OwnerUserId == searchCriteria.UserId &&
+                  steps.Any(cu => cu == c.RoutineStep));
             }
 
 
             /// خاتمه یافته ها
             if (searchCriteria.DashboardType == DashboardTypes.Done)
             {
-
+                query = query.Where(c => c.RoutineIsDone == true &&
+                  logs.Any(cu => cu == c.RoutineStep));
             }
 
             return query;
