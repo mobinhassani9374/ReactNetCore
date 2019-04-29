@@ -43,5 +43,7 @@ namespace ReactNetCore.RoutineBuilder
         /// در کارتابل خاتمه‌یافته‌ها این طرح‌ها را فیلتر گذاری میکنیم
         /// </summary>
         public bool RoutineIsSucceeded { get; set; }
+
+        public int OwnerUserId { get; set; }
     }
 }
