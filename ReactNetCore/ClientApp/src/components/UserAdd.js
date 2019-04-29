@@ -24,9 +24,8 @@ export default class UserAdd extends Component {
             userName:'',
             fullName:''
         }).catch(error => {                       
-            if(error.response.status==401) {
-                localStorage.removeItem("token");
-                window.location='/login'
+            if(error.response.status===401) {
+                localStorage.removeItem("token")
             }            
         });                    
     }
