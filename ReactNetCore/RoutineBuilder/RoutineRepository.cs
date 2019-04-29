@@ -63,6 +63,13 @@ namespace ReactNetCore.RoutineBuilder
             return query;
         }
 
+        public bool CreateLog(Entities.RoutineLog entity)
+        {
+            _context.RoutineLogs.Add(entity);
+            if (_context.SaveChanges() > 0) return true;
+            return false;
+        }
+
         /// <summary>
         /// کارتابل چه استپ هایی دارد
         /// </summary>
