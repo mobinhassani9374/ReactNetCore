@@ -40,5 +40,7 @@ namespace ReactNetCore.RoutineBuilder.Dto
         /// اسم جدول در دیتابیس
         /// </summary>
         public string TableName { get; set; }
+
+        public virtual ICollection<RoutineRoleSummaryDto> Roles { get; set; }
     }
 }
