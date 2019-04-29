@@ -26,6 +26,8 @@ namespace ReactNetCore.RoutineBuilder.Entities
         /// </summary>
         public string DashboardCreationComponentName { get; set; }
 
+        public string DashboardCreationName { get; set; }
+
 
         /// <summary>
         /// اسم جدول در دیتابیس
