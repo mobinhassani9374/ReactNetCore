@@ -12,6 +12,8 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.AspNetCore.Authorization;
+using AutoMapper;
+using System.Reflection;
 
 namespace ReactNetCore
 {
@@ -30,6 +32,13 @@ namespace ReactNetCore
             services.AddDbContext<Data.AppDbContext>(options =>
             {
                 options.UseSqlServer(@"Data Source=185.51.200.186\SQL2014,2014;Initial Catalog=ferdows5_ReactNetCore;Persist Security Info=True;User ID=mobin; Password=#q9y6f3Y; MultipleActiveResultSets=True");
+            });
+
+            services.AddAutoMapper();
+
+            Mapper.Initialize(c =>
+            {
+                c.AddProfiles(typeof(Profile).GetTypeInfo().Assembly);
             });
 
             services
