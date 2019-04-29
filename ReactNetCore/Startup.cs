@@ -42,6 +42,8 @@ namespace ReactNetCore
                 c.AddProfiles(typeof(RoutineMappingProfile).GetTypeInfo().Assembly);
             });
 
+            services.AddScoped<RoutineRepository>();
+
             services
               .AddAuthentication(defaultScheme: JwtBearerDefaults.AuthenticationScheme)
               .AddJwtBearer(options =>
