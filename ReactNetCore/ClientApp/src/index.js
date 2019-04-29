@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import { ConnectedRouter } from 'react-router-redux';
 import { createBrowserHistory } from 'history';
+import reducer from './reducers'
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
@@ -15,7 +16,6 @@ import './docs/css/animate.css'
 import './docs/css/styles.css?v=0.0.1'
 import './docs/lib/pe-icon-7-stroke/css/helper.css'
 import './docs/lib/pe-icon-7-stroke/css/pe-icon-7-stroke.css'
-import { stat } from 'fs';
 
 // Create browser history to use in the Redux store
 const baseUrl = document.getElementsByTagName('base')[0].getAttribute('href');
@@ -23,12 +23,6 @@ const history = createBrowserHistory({ basename: baseUrl });
 
 // Get the application-wide store instance, prepopulating with state from the server where available.
 const initialState = window.initialReduxState;
-
-let reducer =()=>{
-  return {
-
-  }
-}
 
 const store = createStore(reducer)
 

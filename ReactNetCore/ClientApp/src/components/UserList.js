@@ -28,8 +28,8 @@ export default class UserList extends Component {
             }, 100);
         }).catch(error => {                       
             if(error.response.status===401) {
-                localStorage.removeItem("token");
-                window.location='/login'
+                localStorage.removeItem("token");                
+                this.props.history.push('/login'); 
             }            
         });
     }
@@ -41,6 +41,7 @@ export default class UserList extends Component {
   
     render() {
         let { userList, isLoading } = this.state;
+        
         return (
             <div >
                 <Layout />

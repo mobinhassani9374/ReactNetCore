@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
 import Layout from './Layout';
 import Request from '../Service/Request';
-
-export default class Login extends Component {
+import authorization from '../actions/login';
+import { connect } from 'react-redux';
+class Login extends Component {
 
     componentDidMount() {    
         let hasToken = localStorage.getItem("token");
         if(hasToken!=null) {
-            window.location='/';
+            this.props.history.push('/'); 
         }
     }
     state = {
@@ -28,16 +29,18 @@ export default class Login extends Component {
         Request('/login','Post',{password,userName}).then(response=>{
           console.log(response);  
           if(response.data.isSuccess) {
-             localStorage.setItem("token",response.data.token);
-             window.location='/';
+            localStorage.setItem("token",response.data.token);
+            this.props.dispatch(authorization(true))
+            this.props.history.push('/'); 
           }
           else {
-              alert(response.data.message);
+              alert(response.data.message);              
           }
         })
     }
     render() {
         let {userName , password} = this.state;
+        console.log('props',this.props);
         return (
             <div>
                 <Layout />
@@ -73,3 +76,9 @@ export default class Login extends Component {
         )
     }
 }
+
+const mapStateToProp=(state)=>{ 
+    return state;
+}
+
+export default connect(mapStateToProp)(Login);
