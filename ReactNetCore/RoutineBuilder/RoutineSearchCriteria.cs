@@ -10,5 +10,9 @@ namespace ReactNetCore.RoutineBuilder
         public DashboardTypes DashboardType { get; set; }
 
         public int UserId { get; set; }
+
+        public int RoutineId { get; set; }
+
+        public string DashboardEnum { get; set; }
     }
 }
