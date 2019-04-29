@@ -14,6 +14,7 @@ using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.AspNetCore.Authorization;
 using AutoMapper;
 using System.Reflection;
+using ReactNetCore.RoutineBuilder;
 
 namespace ReactNetCore
 {
@@ -38,7 +39,7 @@ namespace ReactNetCore
 
             Mapper.Initialize(c =>
             {
-                c.AddProfiles(typeof(Profile).GetTypeInfo().Assembly);
+                c.AddProfiles(typeof(RoutineMappingProfile).GetTypeInfo().Assembly);
             });
 
             services
