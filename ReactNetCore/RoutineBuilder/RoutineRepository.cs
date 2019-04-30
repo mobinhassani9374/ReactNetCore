@@ -33,5 +33,15 @@ namespace ReactNetCore.RoutineBuilder
 
             return roles;
         }
+
+        public RoutineSummaryDto GetRoutine(int id)
+        {
+            var model = _context
+                .Routines
+                .ProjectTo<RoutineSummaryDto>()
+                .FirstOrDefault(c => c.Id.Equals(id));
+
+            return model;
+        }
     }
 }

@@ -52,5 +52,15 @@ namespace ReactNetCore.Controllers
 
             return Ok(roles);
         }
+
+        [Route("api/routine/{id}")]
+        [HttpGet]
+        public IActionResult GetRoutine(int id)
+        {
+            var model = _routineRepository.GetRoutine(id);
+            if (model == null)
+                return StatusCode(410, $"روال با شناسه {id} یافت نشد");
+            return Ok(model);
+        }
     }
 }
