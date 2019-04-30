@@ -25,13 +25,37 @@ class Layout extends Component {
                 <li className="nav-item">
                   <NavLink className="nav-link" to="/users">لیست کاربران</NavLink>
                 </li> : ''
-            }
+            }           
             {
               authorization ? 
                 <li className="nav-item">
                   <NavLink className="nav-link" to="/users-add">اضافه نمودن کاربر جدید </NavLink>
                 </li>  : ''
-            }                                                                    
+            }  
+            {
+              authorization ? 
+                <li className="nav-item">
+                  <NavLink className="nav-link" to="/cartable/1">روال اول</NavLink>
+                </li> : ''
+            }                                                                  
+            {
+              authorization ? 
+                <li className="nav-item">
+                  <NavLink className="nav-link" to="/cartable/2">روال دوم</NavLink>
+                </li> : ''
+            }                                                                  
+            {
+              authorization ? 
+                <li className="nav-item">
+                  <NavLink className="nav-link" to="/cartable/3">روال سوم</NavLink>
+                </li> : ''
+            }                                                                  
+            {
+              authorization ? 
+                <li className="nav-item">
+                  <NavLink className="nav-link" to="/cartable/4">روال چهارم</NavLink>
+                </li> : ''
+            }                                                                  
             {
               authorization ? 
                 <li className="nav-item">

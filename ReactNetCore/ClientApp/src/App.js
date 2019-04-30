@@ -7,6 +7,7 @@ import UserList from './components/UserList';
 import UserAdd from './components/UserAdd';
 import NotFound from './components/NotFound';
 import Login from './components/Login';
+import Cartable from './components/Cartable';
 import {connect} from 'react-redux';
 import authorization from './actions/login';
 
@@ -27,6 +28,7 @@ class App extends Component {
           <Route path="/users/" component={UserList} />
           <Route path="/users-add" component={UserAdd} />
           <Route path="/login" component={Login} />
+          <Route path="/cartable/:id" component={Cartable} />
           <Route component={NotFound} />
         </Switch>
       </Router>        
