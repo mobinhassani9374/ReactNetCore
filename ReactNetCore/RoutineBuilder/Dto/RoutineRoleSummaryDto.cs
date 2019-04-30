@@ -53,6 +53,8 @@ namespace ReactNetCore.RoutineBuilder.Dto
 
         public int RoutineId { get; set; }
 
+        public string ComponenName { get; set; }
+
         public virtual RoutineSummaryDto Routine { get; set; }
     }
 }

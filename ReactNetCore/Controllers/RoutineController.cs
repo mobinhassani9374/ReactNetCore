@@ -43,8 +43,8 @@ namespace ReactNetCore.Controllers
                     StepsJson = roles
                     .FirstOrDefault(c => c.DashboardEnum == routine.DashboardCreationName)?.StepsJson,
 
-                    Title = routine.DashboardCreationTitle
-
+                    Title = routine.DashboardCreationTitle,
+                    ComponenName = routine.DashboardCreationComponentName
                 });
             }
 
