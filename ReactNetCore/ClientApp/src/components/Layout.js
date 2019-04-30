@@ -20,7 +20,7 @@ class Layout extends Component {
             <li className="nav-item">
               <NavLink className="nav-link" exact={true} to="/">صفحه اصلی</NavLink>
             </li>
-            {
+            {/* {
               authorization ? 
                 <li className="nav-item">
                   <NavLink className="nav-link" to="/users">لیست کاربران</NavLink>
@@ -31,7 +31,7 @@ class Layout extends Component {
                 <li className="nav-item">
                   <NavLink className="nav-link" to="/users-add">اضافه نمودن کاربر جدید </NavLink>
                 </li>  : ''
-            }  
+            }   */}
             {
               authorization ? 
                 <li className="nav-item">
