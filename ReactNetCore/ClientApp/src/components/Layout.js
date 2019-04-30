@@ -1,20 +1,18 @@
 import React, { Component } from 'react'
 import {NavLink } from 'react-router-dom'
-import {connect} from 'react-redux';
 import authorization from '../actions/login'
+import {connect} from 'react-redux'
 
 class Layout extends Component {
 
   logout=()=> {
     localStorage.removeItem("token");
     let {history, dispatch} = this.props
-    debugger
     dispatch(authorization(false))
-    history.push('/login'); 
+    window.location='/login'     
   }
-  render() {
-    let {authorization} = this.props;
-    console.log( this.props)
+  render() {  
+    let {authorization} = this.props;  
     return (      
       <div>
         <nav className="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
@@ -22,25 +20,30 @@ class Layout extends Component {
             <li className="nav-item">
               <NavLink className="nav-link" exact={true} to="/">صفحه اصلی</NavLink>
             </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/users">لیست کاربران</NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/users-add">اضافه نمودن کاربر جدید </NavLink>
-            </li>                             
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/login">ورود</NavLink>
-            </li>                             
-            <li className="nav-item">
-              <a onClick={this.logout} className="nav-link" >خروج</a>
-            </li>                               
-            <li className="nav-item">
-              <NavLink className="nav-link" to="#">
-                {
-                  authorization ? 'بله' :'نه'
-                }
-              </NavLink>
-            </li>                               
+            {
+              authorization ? 
+                <li className="nav-item">
+                  <NavLink className="nav-link" to="/users">لیست کاربران</NavLink>
+                </li> : ''
+            }
+            {
+              authorization ? 
+                <li className="nav-item">
+                  <NavLink className="nav-link" to="/users-add">اضافه نمودن کاربر جدید </NavLink>
+                </li>  : ''
+            }                                                                    
+            {
+              authorization ? 
+                <li className="nav-item">
+                    <a onClick={this.logout} className="nav-link" >خروج</a>
+                </li>  : ''
+            }
+            {
+              !authorization ? 
+                <li className="nav-item">
+                  <NavLink className="nav-link" to="/login">ورود</NavLink>
+              </li> : ''              
+            }                                                                      
           </ul>
         </nav>            
       </div>
@@ -48,8 +51,8 @@ class Layout extends Component {
   }
 }
 
-const mapStateToProp=(state)=>{ 
+const mapStateToProp=(state)=> { 
   return state;
 }
 
-export default connect(mapStateToProp)(Layout)
+export default connect(mapStateToProp)(Layout);

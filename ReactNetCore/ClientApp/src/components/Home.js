@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import Layout from './Layout';
+import { connect } from 'react-redux';
+class Home extends Component {
 
-export class Home extends Component {
-
-  render() {
+  render() {   
     return (
       <div>
         <Layout />
@@ -11,3 +11,6 @@ export class Home extends Component {
     );
   }
 }
+
+
+export default connect()(Home);

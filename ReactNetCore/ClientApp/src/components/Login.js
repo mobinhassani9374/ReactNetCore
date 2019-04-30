@@ -24,10 +24,8 @@ class Login extends Component {
     }
     handleSubmit=(e)=> {
         e.preventDefault();
-        let {userName , password} = this.state;
-        console.log(userName,password);
-        Request('/login','Post',{password,userName}).then(response=>{
-          console.log(response);  
+        let {userName , password} = this.state;     
+        Request('/login','Post',{password,userName}).then(response=>{          
           if(response.data.isSuccess) {
             localStorage.setItem("token",response.data.token);
             this.props.dispatch(authorization(true))
@@ -39,8 +37,7 @@ class Login extends Component {
         })
     }
     render() {
-        let {userName , password} = this.state;
-        console.log('props',this.props);
+        let {userName , password} = this.state;       
         return (
             <div>
                 <Layout />

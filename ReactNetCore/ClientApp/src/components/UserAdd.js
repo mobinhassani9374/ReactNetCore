@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import Request from '../Service/Request';
 import Layout from './Layout';
+import { connect } from 'react-redux';
 
-export default class UserAdd extends Component {
+class UserAdd extends Component {
     state = {
         password:'',
         userName:'',
@@ -71,3 +72,7 @@ export default class UserAdd extends Component {
         )
     }
 }
+
+export default connect()(UserAdd)
+
+

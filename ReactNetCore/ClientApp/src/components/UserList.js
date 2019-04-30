@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import Request from '../Service/Request';
 import UserItem from './UserItem';
 import Layout from './Layout';
-
-export default class UserList extends Component {
+import { connect } from 'react-redux';
+class UserList extends Component {
     state = {
         userList: [
 
@@ -34,14 +34,12 @@ export default class UserList extends Component {
         });
     }
 
-    deleteUser = (id) => {
-        console.log('id =>>>>>>> ',id);
+    deleteUser = (id) => {        
         this.loadData();
     }
   
     render() {
-        let { userList, isLoading } = this.state;
-        
+        let { userList, isLoading } = this.state;        
         return (
             <div >
                 <Layout />
@@ -49,7 +47,7 @@ export default class UserList extends Component {
                     <div className="container">
                         <div className="row">
                             <div className="card w-100">
-                                <div class="card-header">لیست کاربران</div>
+                                <div className="card-header">لیست کاربران</div>
                                 <div className="card-body">
                                     <div className="table-responsive">
                                         <table className="table table-striped">
@@ -80,3 +78,5 @@ export default class UserList extends Component {
         )
     }
 }
+
+export default connect()(UserList)
