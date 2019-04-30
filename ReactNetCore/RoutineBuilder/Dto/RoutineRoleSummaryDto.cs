@@ -50,5 +50,9 @@ namespace ReactNetCore.RoutineBuilder.Dto
         /// ترتیب کارتابل برای رسم مجدد دیاگرام
         /// </summary>
         public int SortOrder { get; set; }
+
+        public int RoutineId { get; set; }
+
+        public virtual RoutineSummaryDto Routine { get; set; }
     }
 }
