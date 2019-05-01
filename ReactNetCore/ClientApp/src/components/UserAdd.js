@@ -40,7 +40,7 @@ class UserAdd extends Component {
                     <div className="container">
                         <div className="row">
                             <div className="card w-100">
-                                <div class="card-header">اضافه نمودن کاربر جدید </div>
+                                <div className="card-header">اضافه نمودن کاربر جدید </div>
                                 <div className="card-body">
                                     <div className="row">
                                         <div className="col-sm-6">
