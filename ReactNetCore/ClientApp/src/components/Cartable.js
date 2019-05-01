@@ -8,8 +8,12 @@ import { toast } from 'react-toastify';
 class Cartable extends Component {
     state = {
         routine : {
+            title:'' ,
+            tableName:'' , 
+            id:'' ,
+        },
 
-        }
+        routineItems:[]
     }
 
     componentDidMount() {
@@ -24,12 +28,18 @@ class Cartable extends Component {
 
     updateData = () => {
         this.props.dispatch(loading(true))
-        Request(`/api/routine/${this.props.match.params.id}`).then(response=> {
-            console.log(response.data);
+        Request(`/api/routine/${this.props.match.params.id}`).then(response=> {            
             this.setState({routine:response.data})
-            setTimeout(() => {
+            Request(`/api/routine/getrolesWithdashboardcreation/${this.props.match.params.id}`).then(response=>{
+                console.log('ajax routin =>>>>',response);
+                this.setState({
+                    routineItems:response.data
+                })
                 this.props.dispatch(loading(false))
-            }, 100);
+            })
+            .catch(error=>{
+                
+            })  
         }).catch(error=> {  
             if(error.response.status===401) {
                 localStorage.removeItem("token");                
@@ -46,20 +56,36 @@ class Cartable extends Component {
     }
 
     render() { 
-        let {title , tableName , id} = this.state.routine;      
-        return (
-        <div>
-            <Layout />
-            <div className="section">
+        let {title , tableName , id} = this.state.routine;   
+        let {routineItems} = this.state
+        return (            
+            <div >
+                <Layout />
                 <div className="container">
-                    <div className="row flex-column">
-                        <p>نام جدول : {tableName}</p>
-                        <p>عنوان : {title}</p>
-                        <p>آی دی : {id}</p>                       
-                    </div>
+                    <div className="section">
+                        <div className="card">
+                            <div className="card-header">
+                                مدیریت روال ها 
+                            </div>
+                            <div className="card-body">
+                                <p>نام جدول : {tableName}</p>
+                                <p>عنوان : {title}</p>
+                                <p>آی دی : {id}</p>    
+                                <hr className="mt-4 mb-4"/>
+
+                                <div className="alert alert-success">
+                                    <strong>روال!</strong> نمایش روالهای موجود 
+                                </div>
+                                <ul className="list-group">
+                                {
+                                    routineItems.map((item,index)=><li key={index} className="list-group-item">{item.title}</li>)
+                                } 
+                                </ul> 
+                            </div>             
+                        </div>
+                    </div>                    
                 </div>
             </div>
-        </div>
         )
     }
 }

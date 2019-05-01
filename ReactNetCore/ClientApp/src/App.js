@@ -8,6 +8,7 @@ import UserList from './components/UserList';
 import UserAdd from './components/UserAdd';
 import NotFound from './components/NotFound';
 import Login from './components/Login';
+import Layout from './components/Layout';
 import Cartable from './components/Cartable';
 import {connect} from 'react-redux';
 import authorization from './actions/login';
@@ -22,10 +23,7 @@ class App extends Component {
     }
   }
   render() {
-    let {login,user ,loading} = this.props
-    console.log('login',login)
-    console.log('user',user)
-    console.log('loading',loading)
+    let {login,user ,loading} = this.props    
     return (
       <div>
         {
@@ -33,7 +31,7 @@ class App extends Component {
               <div className="loading-spin"></div>
           </div> : ''
         } 
-        <ToastContainer position={'bottom-left'} autoClose={6000} rtl={true}/>
+        <ToastContainer position={'bottom-left'} autoClose={6000} rtl={true}/>        
         <Router>        
           <Switch>
             <Route path="/" exact component={Home} />
