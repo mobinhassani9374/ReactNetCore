@@ -3,6 +3,7 @@ import Layout from './Layout';
 import Request from '../Service/Request';
 import { connect } from 'react-redux';
 import loading from '../actions/loading';
+import { toast } from 'react-toastify';
 
 class Cartable extends Component {
     state = {
@@ -34,9 +35,11 @@ class Cartable extends Component {
                 localStorage.removeItem("token");                
                 this.props.history.push('/login'); 
             } 
-            else {
-                alert(error.response.data)
+            else {                              
                 this.props.history.push('/')
+                setTimeout(() => {
+                    toast.error(error.response.data)
+                }, 100);
             }    
             this.props.dispatch(loading(false))                     
         })

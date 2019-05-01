@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Home from './components/Home';
 import { loadProgressBar } from 'axios-progress-bar';
 import '../node_modules/bootstrap/dist/css/bootstrap.css';
+import 'react-toastify/dist/ReactToastify.css';
 import {BrowserRouter as Router, Route , Switch } from 'react-router-dom'
 import UserList from './components/UserList';
 import UserAdd from './components/UserAdd';
@@ -10,6 +11,7 @@ import Login from './components/Login';
 import Cartable from './components/Cartable';
 import {connect} from 'react-redux';
 import authorization from './actions/login';
+import { ToastContainer } from 'react-toastify';
 
 class App extends Component {
   componentDidMount () {
@@ -31,6 +33,7 @@ class App extends Component {
               <div className="loading-spin"></div>
           </div> : ''
         } 
+        <ToastContainer position={'bottom-left'} autoClose={6000} rtl={true}/>
         <Router>        
           <Switch>
             <Route path="/" exact component={Home} />

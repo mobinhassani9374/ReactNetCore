@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import {NavLink } from 'react-router-dom'
 import authorization from '../actions/login'
 import {connect} from 'react-redux'
-import { stat } from 'fs';
+import { toast } from 'react-toastify';
 
 class Layout extends Component {
 
@@ -71,7 +71,7 @@ class Layout extends Component {
               </li> : ''              
             }                                                                      
           </ul>
-        </nav>            
+        </nav>                    
       </div>
     )
   }

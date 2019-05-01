@@ -75,3 +75,12 @@ body {
     transform: scale(1.0);
   }
 }
+
+.Toastify__toast-body {
+  font-family: IRANSans;
+}
+
+.Toastify__close-button {
+  position: relative;
+  top: 12px;
+}
