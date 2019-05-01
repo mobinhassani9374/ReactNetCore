@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using ReactNetCore.RoutineBuilder;
 using ReactNetCore.RoutineBuilder.Dto;
+using DNTPersianUtils.Core;
 
 namespace ReactNetCore.Controllers
 {
@@ -26,7 +27,7 @@ namespace ReactNetCore.Controllers
             var routine = roles.Select(c => c.Routine).FirstOrDefault();
 
             if (routine == null)
-                return StatusCode(410, $"روال با شناسه {routine} یافت نشد");
+                return StatusCode(410, $"روال با شناسه {routineId.ToPersianNumbers()} یافت نشد");
 
             if (routine.HaveDashboardCreation)
             {
@@ -59,7 +60,7 @@ namespace ReactNetCore.Controllers
         {
             var model = _routineRepository.GetRoutine(id);
             if (model == null)
-                return StatusCode(410, $"روال با شناسه {id} یافت نشد");
+                return StatusCode(410, $"روال با شناسه {id.ToPersianNumbers()} یافت نشد");
             return Ok(model);
         }
     }
