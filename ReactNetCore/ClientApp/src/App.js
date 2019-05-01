@@ -20,6 +20,9 @@ class App extends Component {
     }
   }
   render() {
+    let {login,user} = this.props;
+    console.log('login',login)
+    console.log('user',user)
     return (
       <Router>        
         <Switch>
@@ -35,6 +38,10 @@ class App extends Component {
   }
 }
 
-export default connect()(App)
+const mapStateToProp=(state)=> {
+  return state
+}
+
+export default connect(mapStateToProp)(App)
 
 

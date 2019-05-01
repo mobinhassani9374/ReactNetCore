@@ -3,11 +3,9 @@ import Request from '../Service/Request';
 import UserItem from './UserItem';
 import Layout from './Layout';
 import { connect } from 'react-redux';
+import {getUser} from '../actions/user';
 class UserList extends Component {
     state = {
-        userList: [
-
-        ],
         isLoading: true
     }
     componentDidMount() {
@@ -22,10 +20,8 @@ class UserList extends Component {
             isLoading: true
         })
         Request('/api/user').then(res => {
-            setTimeout(() => {
-                this.setState({ userList: res.data })
-                this.setState({ isLoading: false })
-            }, 100);
+            this.props.dispatch(getUser(res.data))
+            this.setState({ isLoading: false })
         }).catch(error => {                       
             if(error.response.status===401) {
                 localStorage.removeItem("token");                
@@ -39,7 +35,8 @@ class UserList extends Component {
     }
   
     render() {
-        let { userList, isLoading } = this.state;        
+        let { userList, isLoading } = this.state; 
+        let {user} = this.props       
         return (
             <div >
                 <Layout />
@@ -63,7 +60,7 @@ class UserList extends Component {
                                             <tbody>
                                                 {
                                                     isLoading ? <tr><td className="text-danger text-center" colSpan="5">در حال بارگزاری اطلاعات</td></tr>
-                                                        : userList.map((item, key) => <UserItem user={item} key={key} deleteUser={this.deleteUser} />)
+                                                        : user.map((item, index) => <UserItem user={item} index={index} key={index} deleteUser={this.deleteUser} />)
                                                 }
                                             </tbody>
                                         </table>                                  
@@ -79,4 +76,8 @@ class UserList extends Component {
     }
 }
 
-export default connect()(UserList)
+const mapStateToProp=(state)=> {
+    return state
+}
+
+export default connect(mapStateToProp)(UserList)
