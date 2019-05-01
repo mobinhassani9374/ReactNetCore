@@ -13,7 +13,8 @@ class Layout extends Component {
     window.location='/login'     
   }
   render() {  
-    let {authorization} = this.props.login;      
+    let {authorization} = this.props.login; 
+    console.log(this.props);     
     return (      
       <div>
         <nav className="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
@@ -76,7 +77,7 @@ class Layout extends Component {
   }
 }
 
-const mapStateToProp=(state)=> {
+const mapStateToProp=(state)=> { 
   return state
 }
 
