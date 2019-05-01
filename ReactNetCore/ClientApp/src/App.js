@@ -20,20 +20,28 @@ class App extends Component {
     }
   }
   render() {
-    let {login,user} = this.props;
+    let {login,user ,loading} = this.props
     console.log('login',login)
     console.log('user',user)
+    console.log('loading',loading)
     return (
-      <Router>        
-        <Switch>
-          <Route path="/" exact component={Home} />
-          <Route path="/users/" component={UserList} />
-          <Route path="/users-add" component={UserAdd} />
-          <Route path="/login" component={Login} />
-          <Route path="/cartable/:id" component={Cartable} />
-          <Route component={NotFound} />
-        </Switch>
-      </Router>        
+      <div>
+        {
+          loading ? <div className="loading">
+              <div className="loading-spin"></div>
+          </div> : ''
+        } 
+        <Router>        
+          <Switch>
+            <Route path="/" exact component={Home} />
+            <Route path="/users/" component={UserList} />
+            <Route path="/users-add" component={UserAdd} />
+            <Route path="/login" component={Login} />
+            <Route path="/cartable/:id" component={Cartable} />
+            <Route component={NotFound} />
+          </Switch>
+        </Router> 
+      </div>       
     );
   }
 }

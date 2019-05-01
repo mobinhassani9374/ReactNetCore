@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Layout from './Layout';
 import Request from '../Service/Request';
 import { connect } from 'react-redux';
+import loading from '../actions/loading';
 
 class Cartable extends Component {
     state = {
@@ -21,9 +22,13 @@ class Cartable extends Component {
     }
 
     updateData = () => {
+        this.props.dispatch(loading(true))
         Request(`/api/routine/${this.props.match.params.id}`).then(response=> {
             console.log(response.data);
             this.setState({routine:response.data})
+            setTimeout(() => {
+                this.props.dispatch(loading(false))
+            }, 100);
         }).catch(error=> {  
             if(error.response.status===401) {
                 localStorage.removeItem("token");                
@@ -32,7 +37,8 @@ class Cartable extends Component {
             else {
                 alert(error.response.data)
                 this.props.history.push('/')
-            }                         
+            }    
+            this.props.dispatch(loading(false))                     
         })
     }
 

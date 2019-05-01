@@ -4,6 +4,7 @@ import UserItem from './UserItem';
 import Layout from './Layout';
 import { connect } from 'react-redux';
 import {getUser} from '../actions/user';
+import loading from '../actions/loading';
 class UserList extends Component {
     state = {
         isLoading: true
@@ -13,6 +14,7 @@ class UserList extends Component {
     }
 
     loadData = () => {
+        this.props.dispatch(loading(true))
         this.setState({
             userList: [
 
@@ -21,7 +23,10 @@ class UserList extends Component {
         })
         Request('/api/user').then(res => {
             this.props.dispatch(getUser(res.data))
-            this.setState({ isLoading: false })
+            this.setState({ isLoading: false });
+            setTimeout(() => {
+                this.props.dispatch(loading(false))
+            }, 100);
         }).catch(error => {                       
             if(error.response.status===401) {
                 localStorage.removeItem("token");                
