@@ -76,5 +76,8 @@ class UserList extends Component {
     }
 }
 
+const mapStateToProp=(state)=> {
+    return state
+}
 
 export default connect(mapStateToProp)(UserList)
