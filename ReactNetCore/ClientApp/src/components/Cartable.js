@@ -9,15 +9,33 @@ class Cartable extends Component {
 
         }
     }
+
     componentDidMount() {
+        this.updateData()
+    }
+
+    componentDidUpdate(prevProps) {
+        if (this.props.match.params.id !== prevProps.match.params.id) {
+           this.updateData()
+        }
+    }
+
+    updateData = () => {
         Request(`/api/routine/${this.props.match.params.id}`).then(response=> {
             console.log(response.data);
             this.setState({routine:response.data})
-        }).catch(error=> {            
-            alert(error.response.data)
-            this.props.history.push('/')
+        }).catch(error=> {  
+            if(error.response.status===401) {
+                localStorage.removeItem("token");                
+                this.props.history.push('/login'); 
+            } 
+            else {
+                alert(error.response.data)
+                this.props.history.push('/')
+            }                         
         })
     }
+
     render() { 
         let {title , tableName , id} = this.state.routine;      
         return (
