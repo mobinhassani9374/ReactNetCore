@@ -20,15 +20,18 @@ export default class Routine extends Component {
                             <p>  صفحه نمایشی : {pageNumber}</p>    
                             <hr className="mt-4 mb-4"/>
 
-                            <ul class="nav nav-tabs">
-                                <li class="nav-item">
-                                    <a class="nav-link active" data-toggle="tab">Home</a>
+                            <ul className="nav nav-tabs">
+                                <li className="nav-item">
+                                    <a className={"nav-link  " + (type=='Draft' ? 'active' : '')} data-toggle="tab">پیش نویس ها </a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" data-toggle="tab">Menu 1</a>
+                                <li className="nav-item">
+                                    <a className={"nav-link  " + (type=='New' ? 'active' : '')}  data-toggle="tab">تازه ها</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" data-toggle="tab">Menu 2</a>
+                                <li className="nav-item">
+                                    <a className={"nav-link  " + (type=='Archive' ? 'active' : '')} data-toggle="tab">آرشیوها</a>
+                                </li>
+                                <li className="nav-item">
+                                    <a className={"nav-link  " + (type=='Done' ? 'active' : '')} data-toggle="tab">خاتمه یافته ها</a>
                                 </li>
                             </ul>
 
