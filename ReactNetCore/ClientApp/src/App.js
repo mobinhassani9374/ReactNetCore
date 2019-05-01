@@ -14,7 +14,6 @@ import authorization from './actions/login';
 class App extends Component {
   componentDidMount () {
     loadProgressBar()
-
     let hasToken = localStorage.getItem("token");
     if(hasToken!=null) {
       this.props.dispatch(authorization(true))

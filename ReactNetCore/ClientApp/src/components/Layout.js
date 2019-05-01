@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import {NavLink } from 'react-router-dom'
 import authorization from '../actions/login'
 import {connect} from 'react-redux'
+import { stat } from 'fs';
 
 class Layout extends Component {
 
@@ -12,7 +13,8 @@ class Layout extends Component {
     window.location='/login'     
   }
   render() {  
-    let {authorization} = this.props;  
+    let {authorization} = this.props.login;  
+    console.log('authorization',authorization)
     return (      
       <div>
         <nav className="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
@@ -75,8 +77,8 @@ class Layout extends Component {
   }
 }
 
-const mapStateToProp=(state)=> { 
-  return state;
+const mapStateToProp=(state)=> {
+  return state
 }
 
 export default connect(mapStateToProp)(Layout);

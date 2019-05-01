@@ -5,10 +5,14 @@ import authorization from '../actions/login';
 import { connect } from 'react-redux';
 class Login extends Component {
 
-    componentDidMount() {    
+    componentDidMount() {         
         let hasToken = localStorage.getItem("token");
         if(hasToken!=null) {
+            this.props.dispatch(authorization(true))
             this.props.history.push('/'); 
+        }
+        else {
+            this.props.dispatch(authorization(false))
         }
     }
     state = {
