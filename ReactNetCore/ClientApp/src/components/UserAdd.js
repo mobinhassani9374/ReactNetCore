@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Request from '../Service/Request';
 import Layout from './Layout';
 import { connect } from 'react-redux';
+import { toast } from 'react-toastify';
 
 class UserAdd extends Component {
     state = {
@@ -19,12 +20,17 @@ class UserAdd extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
-        Request('/api/user','post',this.state).then(res=>alert('کاربر با موفقیت اضافه شد '))
-        this.setState({
-            password:'',
-            userName:'',
-            fullName:''
-        }).catch(error => {                       
+        Request('/api/user','post',this.state).then(res=>{              
+                toast.success('کاربر با موفقیت اضافه شد ')
+                this.setState({
+                    password:'',
+                    userName:'',
+                    fullName:''
+                })
+                this.props.history.push('/users')
+            }
+        )
+        .catch(error => {                       
             if(error.response.status===401) {
                 localStorage.removeItem("token")
             }            
