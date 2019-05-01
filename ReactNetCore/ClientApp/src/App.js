@@ -8,8 +8,8 @@ import UserList from './components/UserList';
 import UserAdd from './components/UserAdd';
 import NotFound from './components/NotFound';
 import Login from './components/Login';
-import Layout from './components/Layout';
 import Cartable from './components/Cartable';
+import Routine from './components/Routine';
 import {connect} from 'react-redux';
 import authorization from './actions/login';
 import { ToastContainer } from 'react-toastify';
@@ -23,7 +23,7 @@ class App extends Component {
     }
   }
   render() {
-    let {login,user ,loading} = this.props    
+    let {loading} = this.props    
     return (
       <div>
         {
@@ -39,6 +39,7 @@ class App extends Component {
             <Route path="/users-add" component={UserAdd} />
             <Route path="/login" component={Login} />
             <Route path="/cartable/:id" component={Cartable} />
+            <Route path="/routine" component={Routine} />
             <Route component={NotFound} />
           </Switch>
         </Router> 
