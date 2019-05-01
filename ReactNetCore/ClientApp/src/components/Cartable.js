@@ -38,7 +38,11 @@ class Cartable extends Component {
                 this.props.dispatch(loading(false))
             })
             .catch(error=>{
-                
+                this.props.history.push('/')
+                setTimeout(() => {
+                    toast.error('برنامه با خطا مواجه شد ');
+                    this.props.dispatch(loading(false))
+                }, 100);
             })  
         }).catch(error=> {  
             if(error.response.status===401) {
