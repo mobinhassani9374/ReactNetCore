@@ -69,7 +69,7 @@ class Cartable extends Component {
                     <div className="section">
                         <div className="card">
                             <div className="card-header">
-                                مدیریت روال ها 
+                                مدیریت کارتابل ها 
                             </div>
                             <div className="card-body">
                                 <p>نام جدول : {tableName}</p>
@@ -78,7 +78,7 @@ class Cartable extends Component {
                                 <hr className="mt-4 mb-4"/>
 
                                 <div className="alert alert-success">
-                                    <strong>روال!</strong> نمایش روالهای موجود 
+                                    <strong>کارتابل!</strong> نمایش کارتابلهای موجود 
                                 </div>
                                 <ul className="list-group">
                                 {
