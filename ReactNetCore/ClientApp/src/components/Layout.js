@@ -3,6 +3,7 @@ import {NavLink } from 'react-router-dom'
 import authorization from '../actions/login'
 import {connect} from 'react-redux'
 import { Redirect } from 'react-router'
+import { toast } from 'react-toastify';
 
 class Layout extends Component {
 
@@ -15,6 +16,7 @@ class Layout extends Component {
     let {dispatch} = this.props
     dispatch(authorization(false))
     this.setState({redirect:true}) 
+    toast.info('خدافظ حسن قلی خان')
   }
   render() {  
     let {authorization} = this.props.login;   
