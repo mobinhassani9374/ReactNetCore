@@ -84,3 +84,7 @@ body {
   position: relative;
   top: 12px;
 }
+
+.nav-link {
+  cursor: pointer;
+}
