@@ -36,48 +36,54 @@ export default class Routine extends Component {
                             </ul>
 
                             <div className="tab-content">
-                                <div className="tab-pane container active" id="home">
+                                <div className={"tab-pane container " + (type=='Draft' ? 'active' : '')}>
                                     <div className="table-responsive">                                                 
                                         <table className="table table-striped">
                                             <thead>
-                                            <tr>
-                                                <th>Firstname</th>
-                                                <th>Lastname</th>
-                                                <th>Email</th>
-                                            </tr>
+                                                <tr>
+                                                    <th>Firstname</th>
+                                                    <th>Lastname</th>
+                                                    <th>Email</th>
+                                                </tr>
                                             </thead>
                                             <tbody>
-                                            <tr>
-                                                <td>John</td>
-                                                <td>Doe</td>
-                                                <td>john@example.com</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Mary</td>
-                                                <td>Moe</td>
-                                                <td>mary@example.com</td>
-                                            </tr>
-                                            <tr>
-                                                <td>July</td>
-                                                <td>Dooley</td>
-                                                <td>july@example.com</td>
-                                            </tr>
+                                                <tr>
+                                                    <td>John</td>
+                                                    <td>Doe</td>
+                                                    <td>john@example.com</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Mary</td>
+                                                    <td>Moe</td>
+                                                    <td>mary@example.com</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>July</td>
+                                                    <td>Dooley</td>
+                                                    <td>july@example.com</td>
+                                                </tr>
                                             </tbody>
-                                        </table>
-                                        </div>
+                                        </table>                                    
                                     </div>
                                     <div className="col-sm-12">
-                                        <ul class="pagination">
-                                            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                                        <ul className="pagination">
+                                            <li className="page-item"><a className="page-link" href="#">Previous</a></li>
+                                            <li className="page-item"><a className="page-link" href="#">1</a></li>
+                                            <li className="page-item"><a className="page-link" href="#">2</a></li>
+                                            <li className="page-item"><a className="page-link" href="#">3</a></li>
+                                            <li className="page-item"><a className="page-link" href="#">Next</a></li>
                                         </ul>
                                     </div>
-                                    
-                                <div className="tab-pane container fade" id="menu1">...</div>
-                                <div className="tab-pane container fade" id="menu2">...</div>
+                                </div>                                    
+                                <div className={"tab-pane container " + (type=='New' ? 'active' : '')}>
+                                    .... New
+                                </div> 
+                                <div className={"tab-pane container " + (type=='Archive' ? 'active' : '')}>
+                                    .... Archive
+                                </div> 
+                                <div className={"tab-pane container " + (type=='Done' ? 'active' : '')}>
+                                    .... Done
+                                </div>
                             </div>
                         </div>             
                     </div>
