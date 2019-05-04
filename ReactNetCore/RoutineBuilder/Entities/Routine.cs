@@ -48,5 +48,7 @@ namespace ReactNetCore.RoutineBuilder.Entities
         public virtual ICollection<RoutineAction> Actions { get; set; }
 
         public virtual ICollection<RoutineLog> Logs { get; set; }
+
+        public virtual ICollection<RoutineField> Fields { get; set; }
     }
 }
