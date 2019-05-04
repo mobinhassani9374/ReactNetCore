@@ -1,11 +1,34 @@
 import React, { Component } from 'react'
 import Layout from './Layout';
-
-export default class Routine extends Component {
+import { connect } from 'react-redux';
+import loading from '../actions/loading';
+ class Routine extends Component {
 
     state = {
         totalPage:50,
     }
+
+    componentDidMount() {
+        this.updateData()
+    }
+
+    updateData = ()=> {
+        this.props.dispatch(loading(true))
+
+        setTimeout(() => {
+            this.props.dispatch(loading(false))
+        }, 500);
+    }
+
+    componentDidUpdate(prevProps) {
+        if (this.props.match.params.type !== prevProps.match.params.type 
+            || this.props.match.params.pageSize !== prevProps.match.params.pageSize 
+            || this.props.match.params.pageNumber !== prevProps.match.params.pageNumber 
+            || this.props.match.params.tableName !== prevProps.match.params.tableName  ) {
+           this.updateData()
+        }
+    }
+
     pagination = (status)=> {
         let {pageNumber , type , pageSize , tableName} = this.props.match.params;             
         switch(status) {           
@@ -14,10 +37,11 @@ export default class Routine extends Component {
                 this.props.history.push(`/routine/${tableName}/${type}/${pageSize}/${++pageNumber}`) 
               }
               break;
-            case 'prev': 
+            case 'prev':                  
                 if(this.state.totalPage>=pageNumber && pageNumber>1) {
-                    this.props.history.push(`/routine/${tableName}/${type}/${pageSize}/${--pageNumber}`) 
+                    this.props.history.push(`/routine/${tableName}/${type}/${pageSize}/${pageNumber-1}`) 
                 }
+                break;
             case 'prev-last': 
                 if(pageNumber!==1) {
                     this.props.history.push(`/routine/${tableName}/${type}/${pageSize}/1`) 
@@ -44,8 +68,10 @@ export default class Routine extends Component {
             this.props.history.push(`/routine/${tableName}/${type}/${pageSize}/1`)
         }      
     }
+
     render() {
         let { tableName , type , pageSize ,pageNumber} = this.props.match.params;
+        console.log(this.props);
         return (
             <div >
                 <Layout />
@@ -140,3 +166,9 @@ export default class Routine extends Component {
         )
     }
 }
+
+const mapStateToProps =(state)=>{
+    return state
+}
+
+export default connect(mapStateToProps)(Routine)
