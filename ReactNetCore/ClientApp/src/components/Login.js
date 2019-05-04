@@ -4,6 +4,7 @@ import Request from '../Service/Request';
 import authorization from '../actions/login';
 import { connect } from 'react-redux';
 import { toast } from 'react-toastify';
+import loading from '../actions/loading';
 class Login extends Component {
 
     componentDidMount() {         
@@ -14,6 +15,7 @@ class Login extends Component {
         }
         else {
             this.props.dispatch(authorization(false))
+            //this.props.dispatch(loading(false))
         }
     }
     state = {

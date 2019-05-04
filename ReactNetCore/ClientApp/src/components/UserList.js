@@ -31,6 +31,7 @@ class UserList extends Component {
             if(error.response.status===401) {
                 localStorage.removeItem("token");                
                 this.props.history.push('/login'); 
+                this.props.dispatch(loading(false))
             }            
         });
     }
