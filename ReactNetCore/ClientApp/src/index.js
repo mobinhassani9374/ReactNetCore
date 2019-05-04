@@ -7,8 +7,9 @@ import { createBrowserHistory } from 'history';
 import reducer from './reducers'
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
-
+import '../node_modules/bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-4.1.3-rtl/css/bootstrap.css';
+import 'bootstrap-4.1.3-rtl/js/jquery-slim.min.js'
 import 'axios-progress-bar/dist/nprogress.css'
 import '../node_modules/font-awesome/css/font-awesome.css';
 import './docs/fonts/font-fa.css'
