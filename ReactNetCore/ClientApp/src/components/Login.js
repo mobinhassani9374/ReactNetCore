@@ -3,6 +3,7 @@ import Layout from './Layout';
 import Request from '../Service/Request';
 import authorization from '../actions/login';
 import { connect } from 'react-redux';
+import { toast } from 'react-toastify';
 class Login extends Component {
 
     componentDidMount() {         
@@ -34,9 +35,10 @@ class Login extends Component {
             localStorage.setItem("token",response.data.token);
             this.props.dispatch(authorization(true))
             this.props.history.push('/'); 
+            toast.success('کاربر گرامی خوش آمدید ')  
           }
           else {
-              alert(response.data.message);              
+            toast.error(response.data.message)                        
           }
         })
     }
