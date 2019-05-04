@@ -4,6 +4,7 @@ import Request from '../Service/Request';
 import { connect } from 'react-redux';
 import loading from '../actions/loading';
 import { toast } from 'react-toastify';
+import {NavLink } from 'react-router-dom'
 
 class Cartable extends Component {
     state = {
@@ -82,7 +83,7 @@ class Cartable extends Component {
                                 </div>
                                 <ul className="list-group">
                                 {
-                                    routineItems.map((item,index)=><li key={index} className="list-group-item">{item.title}</li>)
+                                    routineItems.map((item,index)=><li key={index} className="list-group-item"><NavLink to="/routine/mahdi/Draft/10/1">{item.title}</NavLink></li>)
                                 } 
                                 </ul> 
                             </div>             
