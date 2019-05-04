@@ -88,3 +88,18 @@ body {
 .nav-link {
   cursor: pointer;
 }
+
+.navbar-collapse {
+  border-top: 0;
+  box-shadow: none !important;
+}
+
+@media (min-width: 768px){
+  .navbar {
+       border-radius: 0px;
+  }
+}
+
+.navbar {
+  justify-content: end;
+}
