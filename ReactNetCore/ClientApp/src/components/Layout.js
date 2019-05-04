@@ -2,17 +2,26 @@ import React, { Component } from 'react'
 import {NavLink } from 'react-router-dom'
 import authorization from '../actions/login'
 import {connect} from 'react-redux'
+import { Redirect } from 'react-router'
 
 class Layout extends Component {
 
+  state = {
+    redirect:false
+  }
+
   logout=()=> {
     localStorage.removeItem("token");
-    let {history, dispatch} = this.props
+    let {dispatch} = this.props
     dispatch(authorization(false))
-    window.location='/login'     
+    this.setState({redirect:true}) 
   }
   render() {  
-    let {authorization} = this.props.login;     
+    let {authorization} = this.props.login;   
+    let {redirect} = this.state;  
+    if(redirect) {
+      return <Redirect to='/login'/>
+    }
     return (      
       <div>
         <nav className="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
