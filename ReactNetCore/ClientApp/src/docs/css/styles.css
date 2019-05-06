@@ -78,6 +78,7 @@ body {
 
 .Toastify__toast-body {
   font-family: IRANSans;
+  text-align: right;
 }
 
 .Toastify__close-button {
