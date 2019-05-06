@@ -73,9 +73,9 @@ class Cartable extends Component {
                                 مدیریت کارتابل ها 
                             </div>
                             <div className="card-body">
-                                <p>نام جدول : {tableName}</p>
-                                <p>عنوان : {title}</p>
-                                <p>آی دی : {id}</p>    
+                                <p className="text-right">نام جدول : {tableName}</p>
+                                <p className="text-right">عنوان : {title}</p>
+                                <p className="text-right">آی دی : {id}</p>    
                                 <hr className="mt-4 mb-4"/>
 
                                 <div className="alert alert-success">

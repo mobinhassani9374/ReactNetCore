@@ -4,7 +4,8 @@ import Layout from './Layout';
 import { connect } from 'react-redux';
 import { toast } from 'react-toastify';
 import loading from '../actions/loading';
-
+import {MDBContainer , MDBRow , MDBInput , MDBBtn , MDBCol , MDBCard ,MDBCardBody , MDBCardHeader , MDBBreadcrumb , MDBBreadcrumbItem , Container  } from 'mdbreact'
+ 
 class UserAdd extends Component {
     state = {
         password:'',
@@ -47,15 +48,16 @@ class UserAdd extends Component {
             <div>
                 <Layout />
                 <div className="section">
-                    <div className="container">
-                        <div className="row">
-                            <div className="card w-100">
-                                <div className="card-header">اضافه نمودن کاربر جدید </div>
-                                <div className="card-body">
-                                    <div className="row">
-                                        <div className="col-sm-6">
+                    <MDBContainer>
+                        <MDBRow >                           
+                            <MDBCard className="w-100">
+                                <MDBCardHeader>اضافه نمودن کاربر جدید </MDBCardHeader>
+                                <MDBCardBody>
+                                    <MDBRow>
+                                        <MDBCol sm="6">
                                             <form onSubmit={this.handleSubmit}>
                                                 <div className="form-group">
+                                                    
                                                     <label>نام و نام خانوادکی کاربر</label>
                                                     <input required onChange={this.handleChange} value={fullName} placeholder="نام و نام خانوادکی کاربر" type="text" className="form-control" name="fullName" />
                                                 </div>
@@ -68,15 +70,15 @@ class UserAdd extends Component {
                                                     <input required onChange={this.handleChange} value={password} placeholder="رمز عبور کاربر" type="password" className="form-control" name="password" />
                                                 </div>
                                                 <div className="form-group">
-                                                    <button className="btn btn-outline btn-success btn-block">ثبت نام</button>
+                                                    <MDBBtn className="btn-block" type="submit" gradient="aqua">ثبت نام</MDBBtn>                                                   
                                                 </div>
                                             </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>  
+                                        </MDBCol>
+                                    </MDBRow>
+                                </MDBCardBody>
+                            </MDBCard>
+                        </MDBRow>
+                    </MDBContainer>  
                 </div>
             </div>                      
         )

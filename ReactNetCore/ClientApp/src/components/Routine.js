@@ -82,11 +82,11 @@ import loading from '../actions/loading';
                                 مدیریت روال ها 
                             </div>
                             <div className="card-body">
-                                <p>نام جدول : {tableName}</p>
-                                <p>نوع : {type}</p>
-                                <p> تعداد رکورد نمایشی : {pageSize}</p>    
-                                <p>  صفحه نمایشی : {pageNumber}</p> 
-                                <p>تعداد صفحات موجود : {this.state.totalPage}</p>   
+                                <p className="text-right">نام جدول : {tableName}</p>
+                                <p className="text-right">نوع : {type}</p>
+                                <p className="text-right"> تعداد رکورد نمایشی : {pageSize}</p>    
+                                <p className="text-right">  صفحه نمایشی : {pageNumber}</p> 
+                                <p className="text-right">تعداد صفحات موجود : {this.state.totalPage}</p>   
                                 <hr className="mt-4 mb-4"/>
 
                                 <ul className="nav nav-tabs">

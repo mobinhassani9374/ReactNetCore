@@ -104,3 +104,11 @@ body {
 .navbar {
   justify-content: end;
 }
+
+.nav-link.active {
+  color: aqua !important;
+}
+
+.card-header , .form-group , .alert {
+  text-align: right;
+}
