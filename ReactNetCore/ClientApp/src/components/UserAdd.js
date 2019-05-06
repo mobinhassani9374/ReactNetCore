@@ -4,7 +4,7 @@ import Layout from './Layout';
 import { connect } from 'react-redux';
 import { toast } from 'react-toastify';
 import loading from '../actions/loading';
-import {MDBContainer , MDBRow , MDBInput , MDBBtn , MDBCol , MDBCard ,MDBCardBody , MDBCardHeader , MDBBreadcrumb , MDBBreadcrumbItem , Container  } from 'mdbreact'
+import {MDBContainer , MDBRow , MDBInput , MDBBtn , MDBCol , MDBCard ,MDBCardBody , MDBCardHeader} from 'mdbreact'
  
 class UserAdd extends Component {
     state = {
@@ -51,13 +51,12 @@ class UserAdd extends Component {
                     <MDBContainer>
                         <MDBRow >                           
                             <MDBCard className="w-100">
-                                <MDBCardHeader>اضافه نمودن کاربر جدید </MDBCardHeader>
+                                <MDBCardHeader>اضافه نمودن کاربر جدید </MDBCardHeader>                                
                                 <MDBCardBody>
                                     <MDBRow>
-                                        <MDBCol sm="6">
+                                        <MDBCol sm="6">                                            
                                             <form onSubmit={this.handleSubmit}>
-                                                <div className="form-group">
-                                                    
+                                                <div className="form-group">                                                    
                                                     <label>نام و نام خانوادکی کاربر</label>
                                                     <input required onChange={this.handleChange} value={fullName} placeholder="نام و نام خانوادکی کاربر" type="text" className="form-control" name="fullName" />
                                                 </div>

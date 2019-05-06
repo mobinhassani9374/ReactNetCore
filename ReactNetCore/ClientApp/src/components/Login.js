@@ -4,6 +4,7 @@ import Request from '../Service/Request';
 import authorization from '../actions/login';
 import { connect } from 'react-redux';
 import { toast } from 'react-toastify';
+import {MDBInput} from 'mdbreact';
 class Login extends Component {
 
     componentDidMount() {         
@@ -54,9 +55,9 @@ class Login extends Component {
                             <div className="card col-md-6 col-12 m-auto p-0">
                                 <div className="card-header">ورود به سامانه </div>
                                 <div className="card-body">
-                                    <div className="row">
+                                    <div className="row">                                   
                                         <div className="col-sm-12">
-                                            <form onSubmit={this.handleSubmit}>
+                                            <form onSubmit={this.handleSubmit}>                                                                                       
                                                 <div className="form-group">
                                                     <label>نام  کاربری</label>
                                                     <input onChange={this.handleChange} value={userName} required  placeholder="نام کاربری" type="text" className="form-control" name="userName" />

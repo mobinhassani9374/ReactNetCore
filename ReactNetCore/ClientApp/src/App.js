@@ -12,6 +12,7 @@ import Routine from './components/Routine';
 import {connect} from 'react-redux';
 import authorization from './actions/login';
 import { ToastContainer } from 'react-toastify';
+import Test from './components/Test';
 
 class App extends Component {
   componentDidMount () {
@@ -30,7 +31,7 @@ class App extends Component {
               <div className="loading-spin"></div>
           </div> : ''
         } 
-        <ToastContainer position={'bottom-left'} autoClose={6000} rtl={true}/>        
+        <ToastContainer position={'bottom-left'} autoClose={4000} rtl={true}/>        
         <Router>        
           <Switch>
             <Route path="/" exact component={Home} />
@@ -38,6 +39,7 @@ class App extends Component {
             <Route path="/users-add" component={UserAdd} />
             <Route path="/login" component={Login} />
             <Route path="/cartable/:id" component={Cartable} />
+            <Route path="/test" component={Test} />
             <Route path="/routine/:tableName/:type/:pageSize/:pageNumber" component={Routine} />
             <Route component={NotFound} />
           </Switch>
