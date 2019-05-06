@@ -1,15 +1,30 @@
-import React, { Component } from 'react'
-import { MDBInput } from "mdbreact";
+import React, { Component } from 'react';
+import { MDBInput } from 'mdbreact';
 
-export default class Test extends Component {
-  render() {
-    return (
-      <div>
-        <div className="form-group">
-            <label htmlFor="exampleInput">Your e-mail</label>
-            <input type="email" id="exampleInput" className="form-control" />
-        </div>
-      </div>
-    )
+class Test extends Component {
+state = {
+  modal: false
+}
+
+toggle = () => {
+  this.setState({
+    modal: !this.state.modal
+  });
+}
+
+render() {
+  return (
+        <MDBInput
+            label="Your name"
+            icon="user"
+            group
+            type="text"
+            validate
+            error="wrong"
+            success="right"
+        />
+    );
   }
 }
+
+export default Test;
