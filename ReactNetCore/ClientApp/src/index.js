@@ -7,9 +7,15 @@ import { createBrowserHistory } from 'history';
 import reducer from './reducers'
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
-import '../node_modules/bootstrap/dist/css/bootstrap.css';
-import 'bootstrap-4.1.3-rtl/css/bootstrap.css';
-import 'bootstrap-4.1.3-rtl/js/jquery-slim.min.js'
+
+// mdbreact
+
+import '@fortawesome/fontawesome-free/css/all.min.css';
+import 'bootstrap-css-only/css/bootstrap.min.css';
+import 'mdbreact/dist/css/mdb.css';
+
+// add css
+
 import 'axios-progress-bar/dist/nprogress.css'
 import '../node_modules/font-awesome/css/font-awesome.css';
 import './docs/fonts/font-fa.css'
