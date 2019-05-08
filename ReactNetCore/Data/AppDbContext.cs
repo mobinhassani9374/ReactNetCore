@@ -28,6 +28,8 @@ namespace ReactNetCore.Data
 
         public DbSet<User> Users { get; set; }
 
+        public DbSet<RegisterModule> RegisterModules { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
