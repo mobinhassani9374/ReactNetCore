@@ -6,8 +6,13 @@ using System.Threading.Tasks;
 
 namespace ReactNetCore.RoutineBuilder
 {
-    public interface RoutineBaseController
+    public class RoutineBaseController<TEntity> : Controller where TEntity : RoutineEntity
     {
-        IActionResult Manage<TSearchCriteria>(TSearchCriteria searchModel) where TSearchCriteria : RoutineSearchCriteria;
+        protected readonly RoutineBaseRepository<TEntity> _routineBaseRepository;
+
+        public RoutineBaseController(RoutineBaseRepository<TEntity> routineBaseRepository)
+        {
+            _routineBaseRepository = routineBaseRepository;
+        }
     }
 }

@@ -44,7 +44,8 @@ namespace ReactNetCore.Controllers
                     Message = "دریافت توکن",
                     Token = GenerateJSONWebToken(new List<Claim>
                     {
-                        new Claim(ClaimTypes.Name,user.UserName)
+                        new Claim(ClaimTypes.Name,user.UserName),
+                        new Claim(ClaimTypes.NameIdentifier,user.Id.ToString())
                     })
                 });
             }
