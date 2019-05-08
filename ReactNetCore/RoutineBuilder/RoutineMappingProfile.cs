@@ -13,6 +13,7 @@ namespace ReactNetCore.RoutineBuilder
         public RoutineMappingProfile()
         {
             CreateMap<RoutineRole, RoutineRoleSummaryDto>().ReverseMap();
+            CreateMap<RoutineField, RoutineSummaryDto>().ReverseMap();
         }
     }
 }

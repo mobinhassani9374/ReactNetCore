@@ -43,5 +43,16 @@ namespace ReactNetCore.RoutineBuilder
 
             return model;
         }
+
+        public List<RoutineFiledSummaryDto> GetFileds(int id)
+        {
+            var model = _context
+                  .RoutineFields
+                  .ProjectTo<RoutineFiledSummaryDto>()
+                  .Where(c => c.RoutineId.Equals(id))
+                  .ToList();
+
+            return model;
+        }
     }
 }

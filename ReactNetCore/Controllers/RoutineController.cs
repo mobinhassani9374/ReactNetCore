@@ -26,9 +26,6 @@ namespace ReactNetCore.Controllers
 
             var routine = roles.Select(c => c.Routine).FirstOrDefault();
 
-            if (routine == null)
-                return StatusCode(410, $"روال با شناسه {routineId.ToPersianNumbers()} یافت نشد");
-
             if (routine.HaveDashboardCreation)
             {
                 roles.Add(new RoutineRoleSummaryDto
@@ -61,6 +58,14 @@ namespace ReactNetCore.Controllers
             var model = _routineRepository.GetRoutine(id);
             if (model == null)
                 return StatusCode(410, $"روال با شناسه {id.ToPersianNumbers()} یافت نشد");
+            return Ok(model);
+        }
+
+        [Route("api/routine/fields/{id}")]
+        [HttpGet]
+        public IActionResult GetFields(int id)
+        {
+            var model = _routineRepository.GetFileds(id);
             return Ok(model);
         }
     }
