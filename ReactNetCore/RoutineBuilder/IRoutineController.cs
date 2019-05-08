@@ -8,6 +8,8 @@ namespace ReactNetCore.RoutineBuilder
 {
     public interface IRoutineController
     {
+        [Route("[controller]/manage")]
+        [HttpPost]
         IActionResult Manage<TSearchCritria>(TSearchCritria searchModel) where TSearchCritria : RoutineSearchCriteria;
     }
 }
