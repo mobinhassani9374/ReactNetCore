@@ -8,26 +8,15 @@ using ReactNetCore.Data.Entities;
 using ReactNetCore.Models;
 using ReactNetCore.RoutineBuilder;
 using ReactNetCore.ExtensionMethod;
+using ReactNetCore.Dto;
 
 namespace ReactNetCore.Controllers
 {
-    public class RegisterModuleController : RoutineBaseController<RegisterModule>
+    public class RegisterModuleController : RoutineBaseController<RegisterModule, RegisterModuleSearchCritria, RegisterModuleSummaryDto>
     {
         public RegisterModuleController(RoutineBaseRepository<RegisterModule> routineBaseRepository) : base(routineBaseRepository)
         {
 
-        }
-
-        [HttpPost]
-        [Route("api/RegisterModule/manage")]
-        public IActionResult Manage([FromBody]RegisterModuleSearchCritria searchModel)
-        {
-            var userId = this.GetUserId();
-
-            searchModel.UserId = userId;
-            _routineBaseRepository.GetData(searchModel).ToList();
-
-            return Ok();
         }
     }
 }
