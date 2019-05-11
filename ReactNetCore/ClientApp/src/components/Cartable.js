@@ -81,9 +81,9 @@ class Cartable extends Component {
                                 <div className="alert alert-success">
                                     <strong>کارتابل!</strong> نمایش کارتابلهای موجود 
                                 </div>
-                                <ul className="list-group">
+                                <ul className="list-group p-0">
                                 {
-                                    routineItems.map((item,index)=><li key={index} className="list-group-item"><NavLink to={`/routine/${id}/${tableName}/${item.dashboardEnum}/Draft/10/1`}>{item.title}</NavLink></li>)
+                                    routineItems.map((item,index)=><li key={index} className="list-group-item text-right"><NavLink to={`/routine/${id}/${tableName}/${item.dashboardEnum}/Draft/10/1`}>{item.title}</NavLink></li>)
                                 } 
                                 </ul> 
                             </div>             
