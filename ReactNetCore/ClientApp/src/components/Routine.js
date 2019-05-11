@@ -113,7 +113,7 @@ import {toast} from 'react-toastify'
                                         <a onClick={()=>this.changeTab('New')} className={"nav-link  " + (type==='New' ? 'active' : '')}  data-toggle="tab">تازه ها</a>
                                     </li>
                                     <li className="nav-item">
-                                        <a onClick={()=>this.changeTab('Archive')} className={"nav-link  " + (type==='Archive' ? 'active' : '')} data-toggle="tab">آرشیوها</a>
+                                        <a onClick={()=>this.changeTab('Archived')} className={"nav-link  " + (type==='Archived' ? 'active' : '')} data-toggle="tab">آرشیوها</a>
                                     </li>
                                     <li className="nav-item">
                                         <a onClick={()=>this.changeTab('Done')} className={"nav-link  " + (type==='Done' ? 'active' : '')} data-toggle="tab">خاتمه یافته ها</a>
