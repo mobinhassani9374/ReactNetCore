@@ -21,7 +21,6 @@ class Layout extends Component {
   render() {  
     let {authorization} = this.props.login;   
     let {redirect} = this.state;
-    console.log(this.props)
     if(redirect) {
       return <Redirect  to='/login'/>
     }
