@@ -14,7 +14,7 @@ class Home extends Component {
         <Layout />
         {
           this.state.show ? 
-          <SweetAlert  success title="پنل ادمین " onConfirm={()=>{this.setState({show:false})}}>
+          <SweetAlert  success title="پنل ادمین " onConfirm={()=>{this.setState({show:false})}} confirmBtnText="ممنونم">
             خوش آمدید !!!!
           </SweetAlert> : ''
         }

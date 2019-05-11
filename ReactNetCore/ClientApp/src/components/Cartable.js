@@ -31,8 +31,7 @@ class Cartable extends Component {
         this.props.dispatch(loading(true))
         Request(`/api/routine/${this.props.match.params.id}`).then(response=> {            
             this.setState({routine:response.data})
-            Request(`/api/routine/getrolesWithdashboardcreation/${this.props.match.params.id}`).then(response=>{
-                console.log('ajax routin =>>>>',response);
+            Request(`/api/routine/getrolesWithdashboardcreation/${this.props.match.params.id}`).then(response=>{             
                 this.setState({
                     routineItems:response.data
                 })

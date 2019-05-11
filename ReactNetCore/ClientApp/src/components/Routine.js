@@ -9,24 +9,49 @@ import {toast} from 'react-toastify'
 
     state = {
         totalPage:50,
+        header:[],
+        body:[]
     }
 
     componentDidMount() {
         this.updateData()
     }
 
+    handleBodyTable=(body,header)=> {
+        body.forEach(item => {           
+            var newBody = []        
+            this.state.header.forEach(i=> {               
+                //newBody[i.titleEn]=item[i.titleEn]
+                newBody.push(item[i.titleEn])
+            })           
+            this.setState(prevState => ({
+                body: [...prevState.body, newBody]
+            }))
+        });  
+        console.log(this.state.body)      
+    }
+
     updateData = ()=> {
         this.props.dispatch(loading(true))
         
-        let { type , tableName , routineId , dashboardEnum } = this.props.match.params;    
+        let { type , tableName , routineId , dashboardEnum } = this.props.match.params;
+        
+        let head=[]
 
         Request(`/${tableName}/manage`,'Post',{
             dashboardType:type,
             routineId:routineId,
             dashboardEnum:dashboardEnum
         }).then(res=>{
-            this.props.dispatch(loading(false))
-            console.log('routine =>>>',res);
+            Request(`/api/routine/fields/${routineId}`).then(respo=> {
+                this.props.dispatch(loading(false))              
+                this.setState({header:respo.data})               
+                this.handleBodyTable(res.data)  
+            })
+            .catch(error=> {
+                this.props.dispatch(loading(false))
+            })
+                    
         }).catch(error=> {
             this.props.dispatch(loading(false))
             this.props.history.push('/')
@@ -84,8 +109,7 @@ import {toast} from 'react-toastify'
     }
 
     render() {
-        let { tableName , type , pageSize ,pageNumber , routineId , dashboardEnum} = this.props.match.params;
-        console.log(this.props);
+        let { tableName , type , pageSize ,pageNumber , routineId , dashboardEnum} = this.props.match.params;     
         return (
             <div >
                 <Layout />
@@ -126,27 +150,33 @@ import {toast} from 'react-toastify'
                                             <table className="table table-striped">
                                                 <thead>
                                                     <tr>
-                                                        <th>Firstname</th>
-                                                        <th>Lastname</th>
-                                                        <th>Email</th>
+                                                        {
+                                                            this.state.header.map((item,index)=>
+                                                                <th key={index}>{item.title}</th>
+                                                            )
+                                                        }
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr>
-                                                        <td>John</td>
-                                                        <td>Doe</td>
-                                                        <td>john@example.com</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Mary</td>
-                                                        <td>Moe</td>
-                                                        <td>mary@example.com</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>July</td>
-                                                        <td>Dooley</td>
-                                                        <td>july@example.com</td>
-                                                    </tr>
+                                                    {
+                                                        this.state.body.map((item,index)=>
+                                                            <tr key={index}>
+                                                                {
+                                                                    item.map((it,ind)=>
+                                                                        <td key={ind}>{it}</td>
+                                                                    )
+                                                                }
+                                                            </tr>
+                                                        )
+                                                    }   
+
+                                                    {
+                                                        this.state.body.length==0 ? 
+                                                            <tr>
+                                                                <td className="text-center text-danger" colSpan={this.state.header.length}>اطلاعاتی وجود ندارد </td>
+                                                            </tr>
+                                                        :''
+                                                    }                                                
                                                 </tbody>
                                             </table>                                    
                                         </div>
