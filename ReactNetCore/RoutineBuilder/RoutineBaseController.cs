@@ -1,5 +1,6 @@
 ﻿using AutoMapper.QueryableExtensions;
 using Microsoft.AspNetCore.Mvc;
+using ReactNetCore.ExtensionMethod;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,6 +21,10 @@ namespace ReactNetCore.RoutineBuilder
         [Route("[controller]/manage")]
         public virtual IActionResult Manage([FromBody]TSearchCritria searchModel)
         {
+            var userId = this.GetUserId();
+
+            searchModel.UserId = userId;
+
             var query = _routineBaseRepository.GetData(searchModel);
 
             var data = query

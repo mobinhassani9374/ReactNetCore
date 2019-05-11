@@ -15,6 +15,7 @@ using Microsoft.AspNetCore.Authorization;
 using AutoMapper;
 using System.Reflection;
 using ReactNetCore.RoutineBuilder;
+using ReactNetCore.Data.Entities;
 
 namespace ReactNetCore
 {
@@ -42,7 +43,10 @@ namespace ReactNetCore
                 c.AddProfiles(typeof(RoutineMappingProfile).GetTypeInfo().Assembly);
             });
 
+            services.AddScoped<RoutineBaseRepository<RegisterModule>>();
+
             services.AddScoped<RoutineRepository>();
+
 
             services
               .AddAuthentication(defaultScheme: JwtBearerDefaults.AuthenticationScheme)
