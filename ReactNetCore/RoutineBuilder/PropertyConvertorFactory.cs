@@ -12,20 +12,24 @@ namespace ReactNetCore.RoutineBuilder
     {
         public static List<object> Convert(List<T> model)
         {
-            List<object> result = new List<object>();
+            var result = new List<object>();
 
-            var properties = typeof(T).GetProperties().ToList();
+            var obj = typeof(T);
+
+            var properties = obj.GetProperties();
 
             model.ForEach(c =>
             {
-                dynamic MyDynamic = new ExpandoObject();
+                var dynamic = new ExpandoObject();
 
-                var p = MyDynamic as IDictionary<String, object>;
+                var p = dynamic as IDictionary<String, object>;
 
-                properties.ForEach(i =>
+                for (int i = 0; i < properties.Length; i++)
                 {
-                    p[i.Name] = i.GetValue(typeof(T).GetProperties(), null);
-                });
+                    var propInfo = c.GetType().GetProperty(properties[i].Name);
+
+                    p[properties[i].Name] = propInfo.GetValue(model.FirstOrDefault());
+                }
 
                 result.Add(p);
             });

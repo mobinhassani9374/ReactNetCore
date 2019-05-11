@@ -46,13 +46,14 @@ namespace ReactNetCore.RoutineBuilder
                 for (int i = 0; i < properties.Length; i++)
                 {
                     var propInfo = c.GetType().GetProperty(properties[i].Name);
-                    p[properties[i].Name] = propInfo.GetValue(data).ToString();
+
+                    p[properties[i].Name] = propInfo.GetValue(data.FirstOrDefault());
                 }
 
                 result.Add(p);
             });
 
-            var rjiesult = PropertyConvertorFactory<TDto>.Convert(data);
+            var rjiesult = PropertyConvertorFactory<TDto>.Convert(data.FirstOrDefault());
 
             return Ok(result);
         }
