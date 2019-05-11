@@ -168,7 +168,15 @@ import {toast} from 'react-toastify'
                                                                 }
                                                             </tr>
                                                         )
-                                                    }                                                   
+                                                    }   
+
+                                                    {
+                                                        this.state.body.length==0 ? 
+                                                            <tr>
+                                                                <td className="text-center text-danger" colSpan={this.state.header.length}>اطلاعاتی وجود ندارد </td>
+                                                            </tr>
+                                                        :''
+                                                    }                                                
                                                 </tbody>
                                             </table>                                    
                                         </div>
