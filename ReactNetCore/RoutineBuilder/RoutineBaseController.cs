@@ -31,7 +31,30 @@ namespace ReactNetCore.RoutineBuilder
                 .ProjectTo<TDto>()
                 .ToList();
 
-            return Ok(data);
+            var result = new List<object>();
+
+            var obj = typeof(TDto);
+
+            var properties = obj.GetProperties();
+
+            data.ForEach(c =>
+            {
+                var dynamic = new System.Dynamic.ExpandoObject();
+
+                var p = dynamic as IDictionary<String, object>;
+
+                for (int i = 0; i < properties.Length; i++)
+                {
+                    var propInfo = c.GetType().GetProperty(properties[i].Name);
+                    p[properties[i].Name] = propInfo.GetValue(data).ToString();
+                }
+
+                result.Add(p);
+            });
+
+            var rjiesult = PropertyConvertorFactory<TDto>.Convert(data);
+
+            return Ok(result);
         }
     }
 }
