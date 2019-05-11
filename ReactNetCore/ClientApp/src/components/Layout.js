@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import {NavLink } from 'react-router-dom'
 import authorization from '../actions/login'
 import {connect} from 'react-redux'
-import { Redirect } from 'react-router'
+import { Redirect } from 'react-router-dom'
 import { toast } from 'react-toastify';
 
 class Layout extends Component {
@@ -20,9 +20,10 @@ class Layout extends Component {
   }
   render() {  
     let {authorization} = this.props.login;   
-    let {redirect} = this.state;  
+    let {redirect} = this.state;
+    console.log(this.props)
     if(redirect) {
-      return <Redirect to='/login'/>
+      return <Redirect  to='/login'/>
     }
     return (      
       <div>
