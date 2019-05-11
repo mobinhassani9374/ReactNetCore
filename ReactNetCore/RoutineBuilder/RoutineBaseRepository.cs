@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ReactNetCore.RoutineBuilder
 {
-    public abstract class RoutineBaseRepository<TEntity> where TEntity : RoutineEntity
+    public class RoutineBaseRepository<TEntity> where TEntity : RoutineEntity
     {
         private readonly AppDbContext _context;
 
