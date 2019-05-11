@@ -40,7 +40,7 @@ class App extends Component {
             <Route path="/login" component={Login} />
             <Route path="/cartable/:id" component={Cartable} />
             <Route path="/test" component={Test} />
-            <Route path="/routine/:tableName/:type/:pageSize/:pageNumber" component={Routine} />
+            <Route path="/routine/:routineId/:tableName/:dashboardEnum/:type/:pageSize/:pageNumber" component={Routine} />
             <Route component={NotFound} />
           </Switch>
         </Router> 

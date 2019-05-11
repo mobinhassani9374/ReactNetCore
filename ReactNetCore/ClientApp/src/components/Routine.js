@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 import Layout from './Layout';
 import { connect } from 'react-redux';
 import loading from '../actions/loading';
+import Request from '../Service/Request'
+import {toast} from 'react-toastify'
+
  class Routine extends Component {
 
     state = {
@@ -14,10 +17,21 @@ import loading from '../actions/loading';
 
     updateData = ()=> {
         this.props.dispatch(loading(true))
+        
+        let { type , tableName , routineId , dashboardEnum } = this.props.match.params;    
 
-        setTimeout(() => {
+        Request(`/${tableName}/manage`,'Post',{
+            dashboardType:type,
+            routineId:routineId,
+            dashboardEnum:dashboardEnum
+        }).then(res=>{
             this.props.dispatch(loading(false))
-        }, 500);
+            console.log('routine =>>>',res);
+        }).catch(error=> {
+            this.props.dispatch(loading(false))
+            this.props.history.push('/')
+            toast.error('برنامه با خطا مواجه شد ')
+        })
     }
 
     componentDidUpdate(prevProps) {
@@ -30,26 +44,26 @@ import loading from '../actions/loading';
     }
 
     pagination = (status)=> {
-        let {pageNumber , type , pageSize , tableName} = this.props.match.params;             
+        let {pageNumber , type , pageSize , tableName , routineId , dashboardEnum} = this.props.match.params;             
         switch(status) {           
             case 'next':       
               if(this.state.totalPage>pageNumber) {
-                this.props.history.push(`/routine/${tableName}/${type}/${pageSize}/${++pageNumber}`) 
+                this.props.history.push(`/routine/${routineId}/${tableName}/${dashboardEnum}/${type}/${pageSize}/${++pageNumber}`) 
               }
               break;
             case 'prev':                  
                 if(this.state.totalPage>=pageNumber && pageNumber>1) {
-                    this.props.history.push(`/routine/${tableName}/${type}/${pageSize}/${pageNumber-1}`) 
+                    this.props.history.push(`/routine/${routineId}/${tableName}/${dashboardEnum}/${type}/${pageSize}/${pageNumber-1}`) 
                 }
                 break;
             case 'prev-last': 
                 if(pageNumber!==1) {
-                    this.props.history.push(`/routine/${tableName}/${type}/${pageSize}/1`) 
+                    this.props.history.push(`/routine/${routineId}/${tableName}/${dashboardEnum}/${type}/${pageSize}/1`) 
                 }
               break;
             case 'next-last': 
                 if(pageNumber!==this.state.totalPage) {
-                    this.props.history.push(`/routine/${tableName}/${type}/${pageSize}/${this.state.totalPage}`) 
+                    this.props.history.push(`/routine/${routineId}/${tableName}/${dashboardEnum}/${type}/${pageSize}/${this.state.totalPage}`) 
                 }
               break;
             default:              
@@ -58,19 +72,19 @@ import loading from '../actions/loading';
 
     changeSelect =(event)=> {       
         let pageSize = event.target.value
-        let {pageNumber , type ,  tableName} = this.props.match.params;
-        this.props.history.push(`/routine/${tableName}/${type}/${pageSize}/${pageNumber}`) 
+        let {pageNumber , type ,  tableName , routineId , dashboardEnum} = this.props.match.params;
+        this.props.history.push(`/routine/${routineId}/${tableName}/${dashboardEnum}/${type}/${pageSize}/${pageNumber}`) 
     }
 
     changeTab=(type)=> {
         if(type!==this.props.match.params.type) {
-            let {pageSize , tableName} = this.props.match.params;
-            this.props.history.push(`/routine/${tableName}/${type}/${pageSize}/1`)
+            let {pageSize , tableName , routineId , dashboardEnum} = this.props.match.params;
+            this.props.history.push(`/routine/${routineId}/${tableName}/${dashboardEnum}/${type}/${pageSize}/1`)
         }      
     }
 
     render() {
-        let { tableName , type , pageSize ,pageNumber} = this.props.match.params;
+        let { tableName , type , pageSize ,pageNumber , routineId , dashboardEnum} = this.props.match.params;
         console.log(this.props);
         return (
             <div >
@@ -87,6 +101,8 @@ import loading from '../actions/loading';
                                 <p className="text-right"> تعداد رکورد نمایشی : {pageSize}</p>    
                                 <p className="text-right">  صفحه نمایشی : {pageNumber}</p> 
                                 <p className="text-right">تعداد صفحات موجود : {this.state.totalPage}</p>   
+                                <p className="text-right">  روتین آی دی  : {routineId}</p>   
+                                <p className="text-right">  dashboardEnum  : {dashboardEnum}</p>   
                                 <hr className="mt-4 mb-4"/>
 
                                 <ul className="nav nav-tabs">

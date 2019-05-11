@@ -61,7 +61,7 @@ class Cartable extends Component {
     }
 
     render() { 
-        let {title , tableName , id} = this.state.routine;   
+        let {title , tableName , id } = this.state.routine;   
         let {routineItems} = this.state
         return (            
             <div >
@@ -83,7 +83,7 @@ class Cartable extends Component {
                                 </div>
                                 <ul className="list-group">
                                 {
-                                    routineItems.map((item,index)=><li key={index} className="list-group-item"><NavLink to="/routine/mahdi/Draft/10/1">{item.title}</NavLink></li>)
+                                    routineItems.map((item,index)=><li key={index} className="list-group-item"><NavLink to={`/routine/${id}/${tableName}/${item.dashboardEnum}/Draft/10/1`}>{item.title}</NavLink></li>)
                                 } 
                                 </ul> 
                             </div>             
