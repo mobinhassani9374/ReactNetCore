@@ -28,7 +28,54 @@ namespace ReactNetCore.RoutineBuilder
                 {
                     var propInfo = c.GetType().GetProperty(properties[i].Name);
 
-                    p[properties[i].Name] = propInfo.GetValue(model.FirstOrDefault());
+                    var value = propInfo.GetValue(model.FirstOrDefault());
+
+                    if (propInfo.PropertyType == typeof(Int32))
+                    {
+                        value = ((int)value).ToPersianNumbers();
+                    }
+                    if (propInfo.PropertyType == typeof(Int32?))
+                    {
+                        value = ((int?)value)?.ToPersianNumbers();
+                    }
+                    if (propInfo.PropertyType == typeof(bool))
+                    {
+                        if ((bool)value)
+                            value = "بلی";
+                        else value = "خیر";
+                    }
+                    if (propInfo.PropertyType == typeof(bool?))
+                    {
+                        if (((bool?)value).HasValue)
+                        {
+                            if (((bool?)value).Value)
+                            {
+                                value = "بلی";
+                            }
+                            else
+                            {
+                                value = "خیر";
+                            }
+                        }
+                    }
+                    if (propInfo.PropertyType == typeof(DateTime))
+                    {
+                        value = ((DateTime)value).ToPersianDateTextify();
+                    }
+                    if (propInfo.PropertyType == typeof(DateTime?))
+                    {
+                        value = ((DateTime?)value)?.ToPersianDateTextify();
+                    }
+                    if (propInfo.PropertyType == typeof(Int64))
+                    {
+                        value = ((Int64)value).ToPersianNumbers();
+                    }
+                    if (propInfo.PropertyType == typeof(Int64?))
+                    {
+                        value = ((Int64?)value)?.ToPersianNumbers();
+                    }
+
+                    p[properties[i].Name] = value.ToString().ToPersianNumbers();
                 }
 
                 result.Add(p);

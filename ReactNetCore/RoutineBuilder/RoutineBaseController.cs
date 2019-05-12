@@ -31,29 +31,31 @@ namespace ReactNetCore.RoutineBuilder
                 .ProjectTo<TDto>()
                 .ToList();
 
-            var result = new List<object>();
+            //var result = new List<object>();
 
-            var obj = typeof(TDto);
+            //var obj = typeof(TDto);
 
-            var properties = obj.GetProperties();
+            //var properties = obj.GetProperties();
 
-            data.ForEach(c =>
-            {
-                var dynamic = new System.Dynamic.ExpandoObject();
+            //data.ForEach(c =>
+            //{
+            //    var dynamic = new System.Dynamic.ExpandoObject();
 
-                var p = dynamic as IDictionary<String, object>;
+            //    var p = dynamic as IDictionary<String, object>;
 
-                for (int i = 0; i < properties.Length; i++)
-                {
-                    var propInfo = c.GetType().GetProperty(properties[i].Name);
+            //    for (int i = 0; i < properties.Length; i++)
+            //    {
+            //        var propInfo = c.GetType().GetProperty(properties[i].Name);
 
-                    p[properties[i].Name] = propInfo.GetValue(data.FirstOrDefault());
-                }
+            //        p[properties[i].Name] = propInfo.GetValue(data.FirstOrDefault());
+            //    }
 
-                result.Add(p);
-            });
+            //    result.Add(p);
+            //});
 
-            var rjiesult = PropertyConvertorFactory<TDto>.Convert(data.FirstOrDefault());
+            var result = PropertyConvertorFactory<TDto>.Convert(data);
+
+
 
             return Ok(result);
         }
