@@ -30,14 +30,14 @@ namespace ReactNetCore.RoutineBuilder
 
                     var value = propInfo.GetValue(model.FirstOrDefault());
 
-                    if (propInfo.PropertyType == typeof(Int32))
-                    {
-                        value = ((int)value).ToPersianNumbers();
-                    }
-                    if (propInfo.PropertyType == typeof(Int32?))
-                    {
-                        value = ((int?)value)?.ToPersianNumbers();
-                    }
+                    //if (propInfo.PropertyType == typeof(Int32))
+                    //{
+                    //    value = ((int)value).ToPersianNumbers();
+                    //}
+                    //if (propInfo.PropertyType == typeof(Int32?))
+                    //{
+                    //    value = ((int?)value)?.ToPersianNumbers();
+                    //}
                     if (propInfo.PropertyType == typeof(bool))
                     {
                         if ((bool)value)
@@ -65,14 +65,6 @@ namespace ReactNetCore.RoutineBuilder
                     if (propInfo.PropertyType == typeof(DateTime?))
                     {
                         value = ((DateTime?)value)?.ToPersianDateTextify();
-                    }
-                    if (propInfo.PropertyType == typeof(Int64))
-                    {
-                        value = ((Int64)value).ToPersianNumbers();
-                    }
-                    if (propInfo.PropertyType == typeof(Int64?))
-                    {
-                        value = ((Int64?)value)?.ToPersianNumbers();
                     }
 
                     p[properties[i].Name] = value.ToString().ToPersianNumbers();
