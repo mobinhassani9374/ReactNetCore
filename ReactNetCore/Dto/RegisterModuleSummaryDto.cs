@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace ReactNetCore.Dto
 {
-    public class RegisterModuleSummaryDto : RoutineBuilder.RoutineEntity
+    public class RegisterModuleSummaryDto : RoutineBuilder.RoutineDto
     {
         public int Id { get; set; }
 

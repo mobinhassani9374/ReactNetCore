@@ -15,6 +15,8 @@ namespace ReactNetCore.RoutineBuilder.Dto
 
         public string Color { get; set; }
 
+        public string ComponentName { get; set; }
+
         public DashboardTypes DashboardType { get; set; }
 
         public int? Step { get; set; }

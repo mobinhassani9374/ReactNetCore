@@ -19,6 +19,8 @@ namespace ReactNetCore.RoutineBuilder.Entities
 
         public int? Step { get; set; }
 
+        public string ComponentName { get; set; }
+
         public string RemoveAction { get; set; }
 
         public virtual Routine Routine { get; set; }

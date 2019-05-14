@@ -17,6 +17,6 @@ namespace ReactNetCore.RoutineBuilder.Dto
 
         public string ComponentName { get; set; }
 
-        public string RelativePath { get; set; }
+        public List<string> Parameters { get; set; }
     }
 }
