@@ -10,7 +10,8 @@ import {toast} from 'react-toastify'
     state = {
         totalPage:50,
         header:[],
-        body:[]
+        body:[],
+        action:[]
     }
 
     componentDidMount() {
@@ -18,17 +19,25 @@ import {toast} from 'react-toastify'
     }
 
     handleBodyTable=(body,header)=> {
+        this.setState({body:[],action:[]})
         body.forEach(item => {           
-            var newBody = []        
+            var newBody = [];
+
+            this.setState(prevState => ({
+                action: [...prevState.action, item.Actions]
+            }))
+                   
             this.state.header.forEach(i=> {               
                 //newBody[i.titleEn]=item[i.titleEn]
                 newBody.push(item[i.titleEn])
-            })           
+            }) 
+                   
             this.setState(prevState => ({
                 body: [...prevState.body, newBody]
-            }))
+            }))            
         });  
-        console.log(this.state.body)      
+        console.log('body',this.state.body)      
+        console.log('Actions',this.state.action)      
     }
 
     updateData = ()=> {
@@ -155,6 +164,7 @@ import {toast} from 'react-toastify'
                                                                 <th key={index}>{item.title}</th>
                                                             )
                                                         }
+                                                        <th>اقدامات</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -165,7 +175,15 @@ import {toast} from 'react-toastify'
                                                                     item.map((it,ind)=>
                                                                         <td key={ind}>{it}</td>
                                                                     )
+                                                                   
                                                                 }
+                                                                 <td>
+                                                                    {
+                                                                        this.state.action[index].map((i,inde)=>
+                                                                            <a>{i.title}</a>
+                                                                        )
+                                                                    }
+                                                                </td>
                                                             </tr>
                                                         )
                                                     }   
