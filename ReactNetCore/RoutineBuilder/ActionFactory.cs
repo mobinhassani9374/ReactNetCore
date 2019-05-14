@@ -59,11 +59,21 @@ namespace ReactNetCore.RoutineBuilder
                     });
                 }
 
-                if (dashboardType == DashboardTypes.Draft)
+                else
                 {
-                    data.ForEach(i=> 
+                    data.ForEach(i =>
                     {
-
+                        customActions.ForEach(o =>
+                        {
+                            i.Actions.Add(new RoutineFullActionDto
+                            {
+                                Color = o.Color,
+                                Icon = o.Icon,
+                                Title = o.Title,
+                                IsCustomAction = true,
+                                ComponentName = o.ComponentName
+                            });
+                        });
                     });
                 }
             });
