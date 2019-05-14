@@ -26,6 +26,8 @@ namespace ReactNetCore.Data
 
         public DbSet<RoutineField> RoutineFields { get; set; }
 
+        public DbSet<RoutineCustomAction> RoutineCustomActions { get; set; }
+
         public DbSet<User> Users { get; set; }
 
         public DbSet<RegisterModule> RegisterModules { get; set; }
