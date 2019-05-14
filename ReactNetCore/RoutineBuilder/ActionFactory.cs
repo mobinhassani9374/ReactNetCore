@@ -8,7 +8,7 @@ namespace ReactNetCore.RoutineBuilder
 {
     public class ActionFactory<TDto> where TDto : RoutineDto
     {
-        public static List<TDto> Build(List<TDto> data, DashboardTypes dashboardType, List<RoutineActionSummaryDto> actions, List<RoutineCustomActionSummaryDto> customActions, RoutineSummaryDto routine)
+        public static List<TDto> Build(List<TDto> data, DashboardTypes dashboardType, List<RoutineActionSummaryDto> actions, List<RoutineCustomActionSummaryDto> customActions)
         {
             data.ForEach(c =>
             {
@@ -56,6 +56,14 @@ namespace ReactNetCore.RoutineBuilder
                             IsCustomAction = true,
                             ComponentName = o.ComponentName
                         });
+                    });
+                }
+
+                if (dashboardType == DashboardTypes.Draft)
+                {
+                    data.ForEach(i=> 
+                    {
+
                     });
                 }
             });
