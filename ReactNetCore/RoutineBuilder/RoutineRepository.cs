@@ -54,5 +54,27 @@ namespace ReactNetCore.RoutineBuilder
 
             return model;
         }
+
+        public List<RoutineCustomActionSummaryDto> GetCustomActions(int id)
+        {
+            var model = _context
+                 .RoutineCustomActions
+                 .ProjectTo<RoutineCustomActionSummaryDto>()
+                 .Where(c => c.RoutineId.Equals(id))
+                 .ToList();
+
+            return model;
+        }
+
+        public List<RoutineActionSummaryDto> GetActions(int id)
+        {
+            var model = _context
+                 .RoutineActions
+                 .ProjectTo<RoutineActionSummaryDto>()
+                 .Where(c => c.RoutineId.Equals(id))
+                 .ToList();
+
+            return model;
+        }
     }
 }
