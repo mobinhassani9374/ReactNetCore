@@ -31,6 +31,17 @@ namespace ReactNetCore.RoutineBuilder
                 .ProjectTo<TDto>()
                 .ToList();
 
+            var actions = _routineBaseRepository
+                 .RoutineRepository
+                 .GetActions(searchModel.RoutineId);
+
+            var customActions = _routineBaseRepository
+                 .RoutineRepository
+                 .GetCustomActions(searchModel.RoutineId);
+
+            data = ActionFactory<TDto>
+                 .Build(data, searchModel.DashboardType, actions, customActions);
+
             //var result = PropertyConvertorFactory<TDto>.Convert(data);
 
 

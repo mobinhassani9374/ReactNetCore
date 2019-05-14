@@ -8,6 +8,6 @@ namespace ReactNetCore.RoutineBuilder
 {
     public class RoutineDto : RoutineEntity
     {
-        public List<RoutineFullActionDto> Actions { get; set; }
+        public List<RoutineFullActionDto> Actions { get; set; } = new List<RoutineFullActionDto>();
     }
 }

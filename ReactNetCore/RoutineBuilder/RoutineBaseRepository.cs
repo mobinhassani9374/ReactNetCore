@@ -11,9 +11,12 @@ namespace ReactNetCore.RoutineBuilder
     {
         private readonly AppDbContext _context;
 
-        public RoutineBaseRepository(AppDbContext context)
+        private readonly RoutineRepository _routineRepository;
+
+        public RoutineBaseRepository(AppDbContext context, RoutineRepository routineRepository)
         {
             _context = context;
+            _routineRepository = routineRepository;
         }
 
         public IQueryable<TEntity> GetData(RoutineSearchCriteria searchCriteria)
@@ -107,6 +110,14 @@ namespace ReactNetCore.RoutineBuilder
                 .Select(l => l.EntityId).ToList();
 
             return model;
+        }
+
+        public RoutineRepository RoutineRepository
+        {
+            get
+            {
+                return _routineRepository;
+            }
         }
     }
 }

@@ -13,10 +13,10 @@ namespace ReactNetCore.RoutineBuilder.Dto
 
         public string Color { get; set; }
 
+        public string Action { get; set; }
+
         public bool IsCustomAction { get; set; }
 
         public string ComponentName { get; set; }
-
-        public List<string> Parameters { get; set; }
     }
 }

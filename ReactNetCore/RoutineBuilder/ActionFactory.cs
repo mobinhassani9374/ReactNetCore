@@ -37,12 +37,7 @@ namespace ReactNetCore.RoutineBuilder
                             Color = o.Color,
                             Icon = o.Icon,
                             Title = o.Title,
-                            Parameters = new List<string>()
-                             {
-                                 "action",
-                                 "description",
-                                 "id"
-                             }
+                            Action = o.Action
                         });
                     });
 
