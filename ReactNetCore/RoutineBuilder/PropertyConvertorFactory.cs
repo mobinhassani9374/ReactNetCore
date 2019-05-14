@@ -67,7 +67,7 @@ namespace ReactNetCore.RoutineBuilder
                         value = ((DateTime?)value)?.ToPersianDateTextify();
                     }
 
-                    p[properties[i].Name] = value?.ToString();
+                    p[properties[i].Name] = value;
                 }
 
                 result.Add(p);

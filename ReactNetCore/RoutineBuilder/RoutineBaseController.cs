@@ -42,11 +42,13 @@ namespace ReactNetCore.RoutineBuilder
             data = ActionFactory<TDto>
                  .Build(data, searchModel.DashboardType, actions, customActions);
 
-            //var result = PropertyConvertorFactory<TDto>.Convert(data);
+            var result = PropertyConvertorFactory<TDto>.Convert(data);
+
+            
 
 
 
-            return Ok(data);
+            return Ok(result);
         }
     }
 }
