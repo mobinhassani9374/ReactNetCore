@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ReactNetCore.RoutineBuilder
 {
-    public class RoutineBaseController<TEntity, TSearchCritria, TDto> : Controller where TEntity : RoutineEntity where TSearchCritria : RoutineSearchCriteria where TDto : class
+    public class RoutineBaseController<TEntity, TSearchCritria, TDto> : Controller where TEntity : RoutineEntity where TSearchCritria : RoutineSearchCriteria where TDto : RoutineDto
     {
         protected readonly RoutineBaseRepository<TEntity> _routineBaseRepository;
 
@@ -31,33 +31,11 @@ namespace ReactNetCore.RoutineBuilder
                 .ProjectTo<TDto>()
                 .ToList();
 
-            //var result = new List<object>();
-
-            //var obj = typeof(TDto);
-
-            //var properties = obj.GetProperties();
-
-            //data.ForEach(c =>
-            //{
-            //    var dynamic = new System.Dynamic.ExpandoObject();
-
-            //    var p = dynamic as IDictionary<String, object>;
-
-            //    for (int i = 0; i < properties.Length; i++)
-            //    {
-            //        var propInfo = c.GetType().GetProperty(properties[i].Name);
-
-            //        p[properties[i].Name] = propInfo.GetValue(data.FirstOrDefault());
-            //    }
-
-            //    result.Add(p);
-            //});
-
-            var result = PropertyConvertorFactory<TDto>.Convert(data);
+            //var result = PropertyConvertorFactory<TDto>.Convert(data);
 
 
 
-            return Ok(result);
+            return Ok(data);
         }
     }
 }
