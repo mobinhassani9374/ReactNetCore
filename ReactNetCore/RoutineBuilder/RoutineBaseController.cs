@@ -11,13 +11,10 @@ namespace ReactNetCore.RoutineBuilder
     public class RoutineBaseController<TEntity, TSearchCritria, TDto> : Controller where TEntity : RoutineEntity where TSearchCritria : RoutineSearchCriteria where TDto : RoutineDto
     {
         protected readonly RoutineBaseRepository<TEntity> _routineBaseRepository;
-        private readonly RoutineRepository _routineRepository;
 
-        public RoutineBaseController(RoutineBaseRepository<TEntity> routineBaseRepository,
-            RoutineRepository routineRepository)
+        public RoutineBaseController(RoutineBaseRepository<TEntity> routineBaseRepository)
         {
             _routineBaseRepository = routineBaseRepository;
-            _routineRepository = routineRepository;
         }
 
         [HttpPost]
