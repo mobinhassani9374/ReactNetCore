@@ -26,7 +26,7 @@ namespace ReactNetCore.RoutineBuilder
                     .ToList();
 
                     newAction = newAction
-                    .Where(o => removeAction.Contains(o.Action))
+                    .Where(o => !removeAction.Contains(o.Action))
                     .ToList();
 
                     newAction.ForEach(o =>
