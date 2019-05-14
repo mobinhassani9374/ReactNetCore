@@ -174,13 +174,12 @@ import {toast} from 'react-toastify'
                                                                 {
                                                                     item.map((it,ind)=>
                                                                         <td key={ind}>{it}</td>
-                                                                    )
-                                                                   
+                                                                    )                                                                   
                                                                 }
                                                                  <td>
                                                                     {
                                                                         this.state.action[index].map((i,inde)=>
-                                                                            <a>{i.title}</a>
+                                                                            <a className={`${i.icon} ${i.color} pe-2x pe-va`}></a>
                                                                         )
                                                                     }
                                                                 </td>
@@ -191,7 +190,7 @@ import {toast} from 'react-toastify'
                                                     {
                                                         this.state.body.length==0 ? 
                                                             <tr>
-                                                                <td className="text-center text-danger" colSpan={this.state.header.length}>اطلاعاتی وجود ندارد </td>
+                                                                <td className="text-center text-danger" colSpan={this.state.header.length+1}>اطلاعاتی وجود ندارد </td>
                                                             </tr>
                                                         :''
                                                     }                                                
