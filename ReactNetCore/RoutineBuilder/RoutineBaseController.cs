@@ -1,6 +1,7 @@
 ﻿using AutoMapper.QueryableExtensions;
 using Microsoft.AspNetCore.Mvc;
 using ReactNetCore.ExtensionMethod;
+using ReactNetCore.RoutineBuilder.Dto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -44,11 +45,22 @@ namespace ReactNetCore.RoutineBuilder
 
             var result = PropertyConvertorFactory<TDto>.Convert(data);
 
-            
+
 
 
 
             return Ok(result);
+        }
+
+        [HttpPost]
+        [Route("[controller]/changeDashboard")]
+        public virtual IActionResult ChangeDashboard([FromBody]DoActionDto model)
+        {
+            var userId = this.GetUserId();
+
+            _routineBaseRepository.ChangeStep(model.Id, model.RoutineId, userId, model.Action, model.Description);
+
+            return Ok();
         }
     }
 }

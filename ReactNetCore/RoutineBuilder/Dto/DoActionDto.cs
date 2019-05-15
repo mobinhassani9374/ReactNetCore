@@ -12,5 +12,7 @@ namespace ReactNetCore.RoutineBuilder.Dto
         public string Description { get; set; }
 
         public string Action { get; set; }
+
+        public int RoutineId { get; set; }
     }
 }
