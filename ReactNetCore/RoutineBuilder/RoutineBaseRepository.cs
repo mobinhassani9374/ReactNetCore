@@ -1,5 +1,8 @@
-﻿using Newtonsoft.Json;
+﻿using AutoMapper.QueryableExtensions;
+using Newtonsoft.Json;
 using ReactNetCore.Data;
+using ReactNetCore.RoutineBuilder.Dto;
+using ReactNetCore.RoutineBuilder.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -66,11 +69,103 @@ namespace ReactNetCore.RoutineBuilder
             return query;
         }
 
-        public bool CreateLog(Entities.RoutineLog entity)
+        public void ChangeStep(int id, int routineId, int userId, string action, string description)
         {
-            _context.RoutineLogs.Add(entity);
-            if (_context.SaveChanges() > 0) return true;
-            return false;
+            var entity = _context.Set<TEntity>().Find(id);
+
+            if (entity == null)
+                throw new Exception($"رکوردی با این شناسه {id} یافت نشد");
+
+            var steps = _context
+                .RoutineSteps
+                .ProjectTo<RoutineStepSummaryDto>()
+                .Where(c => c.RoutineId.Equals(routineId))
+                .ToList();
+
+            var doneSteps = DoneSteps(steps);
+
+            var successSteps = SuccessSteps(steps);
+
+            var nextStep = _context
+                 .RoutineActions
+                 .Where(c => c.Action.Equals(action)
+             && c.RoutineId.Equals(routineId)
+             && c.Step == entity.RoutineStep)
+             .FirstOrDefault()?.Step;
+
+            if (!nextStep.HasValue)
+                throw new Exception("بعد از این مرحله استپی وجود ندارد");
+
+            entity.RoutineStep = nextStep.Value;
+
+            if (!entity.RoutineIsFlown)
+            {
+                entity.RoutineIsFlown = true;
+                entity.RoutineFlownDate = DateTime.Now;
+            }
+
+            if (doneSteps.Contains(nextStep.Value))
+            {
+                entity.RoutineIsDone = true;
+            }
+
+            if (successSteps.Contains(nextStep.Value))
+            {
+                entity.RoutineIsSucceeded = true;
+            }
+
+            var routineRoleTitle = _context
+                .RoutineRoles
+                .Where(c => c.StepsJson.Contains($"\"{entity.RoutineStep}\"") && c.RoutineId.Equals(routineId))
+                .FirstOrDefault()?.Title;
+
+            _context.Update(entity);
+
+            _context.RoutineLogs.Add(new RoutineLog
+            {
+                Action = action,
+                ActionDate = DateTime.Now,
+                Description = description,
+                EntityId = id,
+                Step = entity.RoutineStep,
+                ToStep = nextStep.Value,
+                UserId = userId,
+                RoutineRoleTitle = routineRoleTitle
+            });
+
+            _context.SaveChanges();
+        }
+
+        private List<int> DoneSteps(List<RoutineStepSummaryDto> steps)
+        {
+            var doneSteps = steps.Where(c => !c.F1.HasValue
+              && !c.F2.HasValue
+              && !c.F3.HasValue
+              && !c.F4.HasValue
+              && !c.F5.HasValue
+              && !c.F6.HasValue
+              && !c.F7.HasValue)
+              .Select(c => c.Step)
+              .ToList();
+
+            return doneSteps;
+        }
+
+        private List<int> SuccessSteps(List<RoutineStepSummaryDto> steps)
+        {
+            var successSteps = new List<int>();
+
+            var doneSteps = DoneSteps(steps);
+
+            doneSteps.ForEach(c =>
+            {
+                if (steps.Any(i => i.F2.HasValue && i.Step == c))
+                {
+                    successSteps.Add(c);
+                }
+            });
+
+            return successSteps;
         }
 
         /// <summary>
