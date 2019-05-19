@@ -14,5 +14,9 @@ namespace ReactNetCore.RoutineBuilder
         public int RoutineId { get; set; }
 
         public string DashboardEnum { get; set; }
+
+        public int PageSize { get; set; }
+
+        public int PageNumber { get; set; }
     }
 }
