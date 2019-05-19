@@ -54,7 +54,7 @@ namespace ReactNetCore.RoutineBuilder
 
         [HttpPost]
         [Route("[controller]/changeDashboard")]
-        public virtual IActionResult ChangeDashboard([FromBody]DoActionDto model)
+        public IActionResult ChangeDashboard([FromBody]DoActionDto model)
         {
             var userId = this.GetUserId();
 
