@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import loading from '../actions/loading';
 import Request from '../Service/Request'
 import {toast} from 'react-toastify'
+import {MDBTooltip, MDBIcon , MDBBtn  } from 'mdbreact'
 
  class Routine extends Component {
 
@@ -178,8 +179,13 @@ import {toast} from 'react-toastify'
                                                                 }
                                                                  <td>
                                                                     {
-                                                                        this.state.action[index].map((i,inde)=>
-                                                                            <a className={`${i.icon} ${i.color} pe-2x pe-va`}></a>
+                                                                        this.state.action[index].map((i,inde)=>                                                                           
+                                                                        <MDBTooltip  placement="top">
+                                                                            <MDBBtn>تارتات </MDBBtn>
+                                                                            <div>
+                                                                                {i.title}
+                                                                            </div>
+                                                                        </MDBTooltip>
                                                                         )
                                                                     }
                                                                 </td>
