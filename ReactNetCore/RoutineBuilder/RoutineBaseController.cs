@@ -18,19 +18,16 @@ namespace ReactNetCore.RoutineBuilder
             _routineBaseRepository = routineBaseRepository;
         }
 
-        [HttpPost]
-        [Route("[controller]/manage")]
-        public virtual IActionResult Manage([FromBody]TSearchCritria searchModel)
+        protected IQueryable<TEntity> GetQueryAble(TSearchCritria searchModel)
         {
-            var userId = this.GetUserId();
+            return _routineBaseRepository.GetData(searchModel);
+        }
 
-            searchModel.UserId = userId;
-
-            var query = _routineBaseRepository.GetData(searchModel);
-
+        protected List<object> GetData(TSearchCritria searchModel, IQueryable<TEntity> query)
+        {
             var data = query
-                .ProjectTo<TDto>()
-                .ToList();
+              .ProjectTo<TDto>()
+              .ToList();
 
             var actions = _routineBaseRepository
                  .RoutineRepository
@@ -45,9 +42,20 @@ namespace ReactNetCore.RoutineBuilder
 
             var result = PropertyConvertorFactory<TDto>.Convert(data);
 
+            return result;
+        }
 
+        [HttpPost]
+        [Route("[controller]/manage")]
+        public virtual IActionResult Manage([FromBody]TSearchCritria searchModel)
+        {
+            var userId = this.GetUserId();
 
+            searchModel.UserId = userId;
 
+            var query = GetQueryAble(searchModel);
+
+            var result = GetData(searchModel, query);
 
             return Ok(result);
         }
