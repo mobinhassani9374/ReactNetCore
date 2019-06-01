@@ -17,9 +17,9 @@ namespace Exir.RoutineBuilder.Controllers
             _context = context;
         }
 
-        [Route("api/routine/getrolesWithdashboardcreation/{routineId}")]
+        [Route("api/routine/getroles/{routineId}")]
         [HttpGet]
-        public IActionResult GetRoleWithDashboardCreation(int routineId)
+        public IActionResult GetRoles(int routineId)
         {
             var roles = _context
                  .RoutineRoles
