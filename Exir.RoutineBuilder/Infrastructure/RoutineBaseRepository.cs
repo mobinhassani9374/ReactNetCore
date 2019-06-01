@@ -9,11 +9,12 @@ using System.Text;
 
 namespace Exir.RoutineBuilder.Infrastructure
 {
-    public class RoutineBaseRepository<TEntity> where TEntity : RoutineEntity
+    public class RoutineBaseRepository<TContext, TEntity> where TEntity : RoutineEntity
+        where TContext : RoutineBuilderContext
     {
-        private readonly RoutineBuilderContext _context;
+        private readonly TContext _context;
 
-        public RoutineBaseRepository(RoutineBuilderContext context)
+        public RoutineBaseRepository(TContext context)
         {
             _context = context;
         }

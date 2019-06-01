@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.28307.329
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReactNetCore", "ReactNetCore\ReactNetCore.csproj", "{75ABFF2C-77F3-49B0-AF1A-B74EF71F60F9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exir.RoutineBuilder", "Exir.RoutineBuilder\Exir.RoutineBuilder.csproj", "{36B9D6D1-C96E-485A-9B9B-994B3A9E9148}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Exir.RoutineBuilder", "Exir.RoutineBuilder\Exir.RoutineBuilder.csproj", "{36B9D6D1-C96E-485A-9B9B-994B3A9E9148}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

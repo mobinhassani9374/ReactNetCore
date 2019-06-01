@@ -1,0 +1,14 @@
+﻿<p>hello mobin</p>
+<script>
+    debugger
+    var xmlHttpRequest = new XMLHttpRequest();
+    xmlHttpRequest.open("GET", '/api/routine/getroles/100', true);
+    xmlHttpRequest.onreadystatechange = function () {
+        if (xmlHttpRequest.readyState == 4 && xmlHttpRequest.status == 200) {
+            alert('ok');
+        }
+        else {
+            alert('no ok');
+        }
+    }
+</script>

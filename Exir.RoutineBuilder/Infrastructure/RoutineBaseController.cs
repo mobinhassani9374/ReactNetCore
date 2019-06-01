@@ -11,14 +11,15 @@ using System.Text;
 
 namespace Exir.RoutineBuilder.Infrastructure
 {
-    public class RoutineBaseController<TEntity, TSearchCritria, TDto> : Controller where TEntity : RoutineEntity where TSearchCritria : RoutineSearchCriteria where TDto : RoutineDto
+    public class RoutineBaseController<TContext, TEntity, TSearchCritria, TDto> : Controller where TEntity : RoutineEntity where TSearchCritria : RoutineSearchCriteria where TDto : RoutineDto
+        where TContext : RoutineBuilderContext
     {
-        protected readonly RoutineBaseRepository<TEntity> _routineBaseRepository;
+        protected readonly RoutineBaseRepository<TContext, TEntity> _routineBaseRepository;
 
-        private readonly RoutineBuilderContext _context;
+        private readonly TContext _context;
 
-        public RoutineBaseController(RoutineBaseRepository<TEntity> routineBaseRepository,
-            RoutineBuilderContext context)
+        public RoutineBaseController(RoutineBaseRepository<TContext, TEntity> routineBaseRepository,
+            TContext context)
         {
             _routineBaseRepository = routineBaseRepository;
             _context = context;
